@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">ExpenseTracker</string>
+    <string name="label_total_balance">total balance</string>
+    <string name="label_total_income">total income</string>
+    <string name="label_total_expense">total expense</string>
+    <string name="label_recent_transactions">Recent Transactions</string>
 </resources>

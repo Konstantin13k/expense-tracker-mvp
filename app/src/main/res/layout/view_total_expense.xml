@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/total_expense_container"
+    style="@style/balance_card_style">
+
+    <TextView
+        android:id="@+id/label_total_expense"
+        style="@style/income_expense_label_style"
+        android:text="@string/label_total_expense" />
+
+    <TextView
+        android:id="@+id/total_expense"
+        style="@style/income_expense_text_style"
+        tools:text="$30,000" />
+
+    <View
+        style="@style/income_expense_icon_style"
+        android:background="@drawable/background_expense" />
+
+</androidx.cardview.widget.CardView>

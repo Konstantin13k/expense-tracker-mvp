@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="income_expense_icon_size">32dp</dimen>
+    <dimen name="income_expense_icon_margin">12dp</dimen>
+    <dimen name="balance_view_height">120dp</dimen>
+    <dimen name="balance_card_corner_radius">4dp</dimen>
+    <dimen name="balance_label_margin_top">34dp</dimen>
+    <dimen name="balance_label_size">12sp</dimen>
+    <dimen name="balance_text_margin_top">62dp</dimen>
+    <dimen name="balance_text_size">20sp</dimen>
+    <dimen name="income_expense_label_margin_start">20dp</dimen>
+    <dimen name="income_expense_label_margin_top">54dp</dimen>
+    <dimen name="income_expense_text_margin_top">76dp</dimen>
+    <dimen name="income_expense_text_margin_start">20dp</dimen>
+    <dimen name="balance_view_margin_start">16dp</dimen>
+    <dimen name="balance_view_margin_end">16dp</dimen>
+    <dimen name="balance_view_margin_top">12dp</dimen>
+    <dimen name="income_expense_margin">10dp</dimen>
+    <dimen name="recent_transactions_label_margin_start">24dp</dimen>
+    <dimen name="recent_transactions_label_size">16sp</dimen>
+    <dimen name="recent_transactions_label_margin_top">24dp</dimen>
+    <dimen name="recent_transactions_rv_margin_top">24dp</dimen>
+    <dimen name="recent_transactions_rv_margin_horizontal">16dp</dimen>
+</resources>
