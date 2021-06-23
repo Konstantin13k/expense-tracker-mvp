@@ -22,8 +22,8 @@
         <item name="android:textAllCaps">true</item>
         <item name="android:layout_marginTop">@dimen/balance_label_margin_top</item>
         <item name="android:textColor">?attr/subtitleTextColor</item>
-        <item name="android:textFontWeight">600</item>
         <item name="android:textSize">@dimen/balance_label_size</item>
+        <item name="android:fontFamily">@font/inter_semi_bold</item>
     </style>
 
     <style name="balance_text_style">
@@ -31,8 +31,8 @@
         <item name="android:layout_height">wrap_content</item>
         <item name="android:layout_marginTop">@dimen/balance_text_margin_top</item>
         <item name="android:textColor">?attr/colorOnSurface</item>
-        <item name="android:textFontWeight">600</item>
         <item name="android:textSize">@dimen/balance_text_size</item>
+        <item name="android:fontFamily">@font/inter_semi_bold</item>
     </style>
 
     <style name="income_expense_label_style" parent="balance_label_style">
@@ -49,8 +49,8 @@
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:textColor">?attr/colorOnSurface</item>
-        <item name="android:textFontWeight">600</item>
         <item name="android:textSize">@dimen/recent_transactions_label_size</item>
+        <item name="android:fontFamily">@font/inter_semi_bold</item>
     </style>
 
     <style name="recent_transactions_rv_style">
