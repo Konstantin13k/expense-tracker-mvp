@@ -1,6 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
+    <style name="text_style">
+        <item name="android:fontFamily">@font/inter_semi_bold</item>
+        <item name="android:textColor">?attr/colorOnSurface</item>
+    </style>
+
     <style name="income_expense_icon_style">
         <item name="android:layout_width">@dimen/income_expense_icon_size</item>
         <item name="android:layout_height">@dimen/income_expense_icon_size</item>
@@ -16,23 +21,20 @@
         <item name="cardCornerRadius">@dimen/balance_card_corner_radius</item>
     </style>
 
-    <style name="balance_label_style">
+    <style name="balance_label_style" parent="text_style">
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:textAllCaps">true</item>
         <item name="android:layout_marginTop">@dimen/balance_label_margin_top</item>
         <item name="android:textColor">?attr/subtitleTextColor</item>
         <item name="android:textSize">@dimen/balance_label_size</item>
-        <item name="android:fontFamily">@font/inter_semi_bold</item>
     </style>
 
-    <style name="balance_text_style">
+    <style name="balance_text_style" parent="text_style">
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:layout_marginTop">@dimen/balance_text_margin_top</item>
-        <item name="android:textColor">?attr/colorOnSurface</item>
         <item name="android:textSize">@dimen/balance_text_size</item>
-        <item name="android:fontFamily">@font/inter_semi_bold</item>
     </style>
 
     <style name="income_expense_label_style" parent="balance_label_style">
@@ -45,21 +47,18 @@
         <item name="android:layout_marginStart">@dimen/income_expense_text_margin_start</item>
     </style>
 
-    <style name="title_label_style">
+    <style name="title_label_style" parent="text_style">
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
-        <item name="android:textColor">?attr/colorOnSurface</item>
         <item name="android:textSize">@dimen/recent_transactions_label_size</item>
-        <item name="android:fontFamily">@font/inter_semi_bold</item>
     </style>
 
     <style name="recent_transactions_rv_style">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">0dp</item>
-        <item name="android:layout_marginStart">@dimen/recent_transactions_rv_margin_horizontal
-        </item>
+        <item name="android:layout_marginStart">@dimen/recent_transactions_rv_margin_horiz</item>
         <item name="android:layout_marginTop">@dimen/recent_transactions_rv_margin_top</item>
-        <item name="android:layout_marginEnd">@dimen/recent_transactions_rv_margin_horizontal</item>
+        <item name="android:layout_marginEnd">@dimen/recent_transactions_rv_margin_horiz</item>
     </style>
 
     <style name="add_transaction_fab_style">
@@ -77,14 +76,12 @@
         <item name="android:padding">@dimen/transaction_icon_padding</item>
     </style>
 
-    <style name="transaction_title_style">
+    <style name="transaction_title_style" parent="text_style">
         <item name="android:layout_width">0dp</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:layout_marginStart">@dimen/transaction_title_margin_start</item>
         <item name="android:layout_marginTop">@dimen/transaction_title_margin_top</item>
         <item name="android:layout_marginEnd">@dimen/transaction_title_margin_end</item>
-        <item name="android:fontFamily">@font/inter_semi_bold</item>
-        <item name="android:textColor">?attr/colorOnSurface</item>
         <item name="android:textSize">@dimen/transaction_title_size</item>
     </style>
 
@@ -97,13 +94,12 @@
         <item name="android:textSize">@dimen/transaction_amount_size</item>
     </style>
 
-    <style name="transaction_date_style">
+    <style name="transaction_date_style" parent="text_style">
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:layout_marginTop">@dimen/transaction_date_margin_top</item>
         <item name="android:layout_marginEnd">@dimen/transaction_date_margin_end</item>
         <item name="android:fontFamily">@font/inter_regular</item>
-        <item name="android:textColor">?attr/colorOnSurface</item>
         <item name="android:textSize">@dimen/transaction_date_size</item>
     </style>
 

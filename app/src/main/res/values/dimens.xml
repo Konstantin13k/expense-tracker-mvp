@@ -20,7 +20,7 @@
     <dimen name="recent_transactions_label_size">16sp</dimen>
     <dimen name="recent_transactions_label_margin_top">24dp</dimen>
     <dimen name="recent_transactions_rv_margin_top">24dp</dimen>
-    <dimen name="recent_transactions_rv_margin_horizontal">16dp</dimen>
+    <dimen name="recent_transactions_rv_margin_horiz">16dp</dimen>
     <dimen name="add_transaction_fab_margin">24dp</dimen>
     <dimen name="transaction_card_height">100dp</dimen>
     <dimen name="transaction_icon_background_size">76dp</dimen>
