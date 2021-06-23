@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.dashboard.DashboardFragment">
+
+    <include
+        android:id="@+id/total_balance_view"
+        layout="@layout/view_total_balance"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/balance_view_height"
+        android:layout_marginStart="@dimen/balance_view_margin_start"
+        android:layout_marginTop="@dimen/balance_view_margin_top"
+        android:layout_marginEnd="@dimen/balance_view_margin_end"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <include
+        android:id="@+id/total_income_view"
+        layout="@layout/view_total_income"
+        android:layout_width="0dp"
+        android:layout_height="@dimen/balance_view_height"
+        android:layout_marginStart="@dimen/balance_view_margin_start"
+        android:layout_marginTop="@dimen/balance_view_margin_top"
+        android:layout_marginEnd="@dimen/income_expense_margin"
+        app:layout_constraintEnd_toStartOf="@id/total_expense_view"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/total_balance_view" />
+
+    <include
+        android:id="@+id/total_expense_view"
+        layout="@layout/view_total_expense"
+        android:layout_width="0dp"
+        android:layout_height="@dimen/balance_view_height"
+        android:layout_marginStart="@dimen/income_expense_margin"
+        android:layout_marginTop="@dimen/balance_view_margin_top"
+        android:layout_marginEnd="@dimen/balance_view_margin_end"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/total_income_view"
+        app:layout_constraintTop_toBottomOf="@id/total_balance_view" />
+
+    <TextView
+        android:id="@+id/label_recent_transactions"
+        style="@style/title_label_style"
+        android:layout_marginStart="@dimen/recent_transactions_label_margin_start"
+        android:layout_marginTop="@dimen/recent_transactions_label_margin_top"
+        android:text="@string/label_recent_transactions"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/total_income_view" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recent_transactions"
+        style="@style/recent_transactions_rv_style"
+        android:orientation="vertical"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/label_recent_transactions"
+        tools:itemCount="3"
+        tools:listitem="@layout/view_holder_transaction" />
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/add_transaction"
+        style="@style/add_transaction_fab_style"
+        android:src="@drawable/ic_add"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        tools:ignore="ContentDescription" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
