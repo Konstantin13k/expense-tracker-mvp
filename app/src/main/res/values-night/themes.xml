@@ -17,5 +17,7 @@
         <item name="titleTextColor">?attr/colorOnSurface</item>
         <item name="subtitleTextColor">@color/light_subtitle_text</item>
         <item name="android:windowBackground">@color/dark_window_background</item>
+
+        <item name="fontFamily">@font/inter</item>
     </style>
 </resources>
