@@ -3,6 +3,9 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
 
+    <color name="income_color">#6FCF97</color>
+    <color name="expense_color">#EB5757</color>
+
     <color name="light_primary">#FFFFFFFF</color>
     <color name="light_primary_variant">#F9F9F9</color>
     <color name="light_on_primary">#FF000000</color>

@@ -22,4 +22,19 @@
     <dimen name="recent_transactions_rv_margin_top">24dp</dimen>
     <dimen name="recent_transactions_rv_margin_horizontal">16dp</dimen>
     <dimen name="add_transaction_fab_margin">24dp</dimen>
+    <dimen name="transaction_card_height">100dp</dimen>
+    <dimen name="transaction_icon_background_size">76dp</dimen>
+    <dimen name="transaction_icon_background_margin_start">12dp</dimen>
+    <dimen name="transaction_icon_padding">24dp</dimen>
+    <dimen name="transaction_title_size">16sp</dimen>
+    <dimen name="transaction_title_margin_start">16dp</dimen>
+    <dimen name="transaction_title_margin_top">28dp</dimen>
+    <dimen name="transaction_amount_size">16sp</dimen>
+    <dimen name="transaction_amount_margin_top">28dp</dimen>
+    <dimen name="transaction_amount_margin_end">16dp</dimen>
+    <dimen name="transaction_date_margin_end">16dp</dimen>
+    <dimen name="transaction_date_margin_top">14dp</dimen>
+    <dimen name="transaction_title_margin_end">24dp</dimen>
+    <dimen name="transaction_date_size">12sp</dimen>
+    <dimen name="transaction_card_margin_bottom">12dp</dimen>
 </resources>
