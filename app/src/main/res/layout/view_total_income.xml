@@ -16,6 +16,6 @@
 
     <View
         style="@style/income_expense_icon_style"
-        android:background="@drawable/background_income" />
+        android:background="@drawable/ic_income" />
 
 </androidx.cardview.widget.CardView>
