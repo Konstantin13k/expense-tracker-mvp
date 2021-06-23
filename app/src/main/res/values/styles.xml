@@ -67,6 +67,7 @@
         <item name="android:layout_height">wrap_content</item>
         <item name="android:layout_marginEnd">@dimen/add_transaction_fab_margin</item>
         <item name="android:layout_marginBottom">@dimen/add_transaction_fab_margin</item>
+        <item name="backgroundTint">?attr/colorSecondary</item>
     </style>
 
 </resources>
