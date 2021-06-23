@@ -9,11 +9,8 @@
 
     <ImageView
         android:id="@+id/transaction_icon"
-        android:layout_width="@dimen/transaction_icon_background_size"
-        android:layout_height="@dimen/transaction_icon_background_size"
+        style="@style/transaction_icon_style"
         android:layout_marginStart="@dimen/transaction_icon_background_margin_start"
-        android:background="@drawable/transaction_icon_background"
-        android:padding="@dimen/transaction_icon_padding"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
@@ -23,14 +20,7 @@
 
     <TextView
         android:id="@+id/transaction_title"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/transaction_title_margin_start"
-        android:layout_marginTop="@dimen/transaction_title_margin_top"
-        android:layout_marginEnd="@dimen/transaction_title_margin_end"
-        android:fontFamily="@font/inter_semi_bold"
-        android:textColor="?attr/colorOnSurface"
-        android:textSize="@dimen/transaction_title_size"
+        style="@style/transaction_title_style"
         app:layout_constraintEnd_toStartOf="@id/transaction_amount"
         app:layout_constraintStart_toEndOf="@id/transaction_icon"
         app:layout_constraintTop_toTopOf="parent"
@@ -38,12 +28,7 @@
 
     <TextView
         android:id="@+id/transaction_amount"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/transaction_amount_margin_top"
-        android:layout_marginEnd="@dimen/transaction_amount_margin_end"
-        android:fontFamily="@font/inter_semi_bold"
-        android:textSize="@dimen/transaction_amount_size"
+        style="@style/transaction_amount_style"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         tools:text="+$3000"
@@ -51,13 +36,7 @@
 
     <TextView
         android:id="@+id/transaction_date"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/transaction_date_margin_top"
-        android:layout_marginEnd="@dimen/transaction_date_margin_end"
-        android:fontFamily="@font/inter_regular"
-        android:textColor="?attr/colorOnSurface"
-        android:textSize="@dimen/transaction_date_size"
+        style="@style/transaction_date_style"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@id/transaction_amount"
         tools:text="Oct 30, 2021" />

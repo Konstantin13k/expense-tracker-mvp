@@ -70,4 +70,41 @@
         <item name="backgroundTint">?attr/colorSecondary</item>
     </style>
 
+    <style name="transaction_icon_style">
+        <item name="android:layout_width">@dimen/transaction_icon_background_size</item>
+        <item name="android:layout_height">@dimen/transaction_icon_background_size</item>
+        <item name="android:background">@drawable/transaction_icon_background</item>
+        <item name="android:padding">@dimen/transaction_icon_padding</item>
+    </style>
+
+    <style name="transaction_title_style">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginStart">@dimen/transaction_title_margin_start</item>
+        <item name="android:layout_marginTop">@dimen/transaction_title_margin_top</item>
+        <item name="android:layout_marginEnd">@dimen/transaction_title_margin_end</item>
+        <item name="android:fontFamily">@font/inter_semi_bold</item>
+        <item name="android:textColor">?attr/colorOnSurface</item>
+        <item name="android:textSize">@dimen/transaction_title_size</item>
+    </style>
+
+    <style name="transaction_amount_style">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginTop">@dimen/transaction_amount_margin_top</item>
+        <item name="android:layout_marginEnd">@dimen/transaction_amount_margin_end</item>
+        <item name="android:fontFamily">@font/inter_semi_bold</item>
+        <item name="android:textSize">@dimen/transaction_amount_size</item>
+    </style>
+
+    <style name="transaction_date_style">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginTop">@dimen/transaction_date_margin_top</item>
+        <item name="android:layout_marginEnd">@dimen/transaction_date_margin_end</item>
+        <item name="android:fontFamily">@font/inter_regular</item>
+        <item name="android:textColor">?attr/colorOnSurface</item>
+        <item name="android:textSize">@dimen/transaction_date_size</item>
+    </style>
+
 </resources>
