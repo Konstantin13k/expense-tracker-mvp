@@ -12,7 +12,7 @@
     <style name="balance_card_style">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">@dimen/balance_view_height</item>
-        <item name="android:background">?attr/colorSurface</item>
+        <item name="android:backgroundTint">?attr/colorSurface</item>
         <item name="cardCornerRadius">@dimen/balance_card_corner_radius</item>
     </style>
 
