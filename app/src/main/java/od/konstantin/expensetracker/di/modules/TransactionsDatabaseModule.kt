@@ -13,8 +13,8 @@ private const val DATABASE_NAME = "transactions.db"
 @Module
 class TransactionsDatabaseModule {
 
-    @Provides
     @Singleton
+    @Provides
     fun provideTransactionsDatabase(context: Context): TransactionsDatabase {
         return Room.databaseBuilder(
             context,
