@@ -4,12 +4,14 @@ import android.content.Context
 import dagger.BindsInstance
 import dagger.Component
 import od.konstantin.expensetracker.di.modules.TransactionsDatabaseModule
+import od.konstantin.expensetracker.di.modules.TransactionsModule
 import javax.inject.Singleton
 
 @Singleton
 @Component(
     modules = [
-        TransactionsDatabaseModule::class
+        TransactionsDatabaseModule::class,
+        TransactionsModule::class
     ]
 )
 interface AppComponent {
