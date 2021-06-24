@@ -1,4 +1,4 @@
-package od.konstantin.expensetracker.data
+package od.konstantin.expensetracker.data.repositories
 
 import od.konstantin.expensetracker.data.local.transactions.dao.TransactionsDao
 import od.konstantin.expensetracker.data.mappers.TransactionMapper
