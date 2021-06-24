@@ -103,4 +103,35 @@
         <item name="android:textSize">@dimen/transaction_date_size</item>
     </style>
 
+    <style name="transaction_input_layout_style" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense">
+        <item name="materialThemeOverlay">@style/ThemeOverlay.App.ExposedInputLayout</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginTop">@dimen/transaction_et_margin_top</item>
+        <item name="android:layout_marginEnd">@dimen/transaction_et_margin_horizontal</item>
+        <item name="android:layout_marginStart">@dimen/transaction_et_margin_horizontal</item>
+        <item name="errorEnabled">true</item>
+    </style>
+
+    <style name="transaction_input_text_edit_text_style">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+    </style>
+
+    <style name="transaction_input_drop_down_style" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense.ExposedDropdownMenu">
+        <item name="materialThemeOverlay">@style/ThemeOverlay.App.ExposedDropdownMenu</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginTop">@dimen/transaction_et_margin_top</item>
+        <item name="android:layout_marginEnd">@dimen/transaction_et_margin_horizontal</item>
+        <item name="android:layout_marginStart">@dimen/transaction_et_margin_horizontal</item>
+        <item name="errorEnabled">true</item>
+        <item name="endIconMode">dropdown_menu</item>
+    </style>
+
+    <style name="transaction_input_date_style" parent="transaction_input_layout_style">
+        <item name="endIconMode">custom</item>
+        <item name="endIconDrawable">@drawable/ic_calendar</item>
+    </style>
+
 </resources>
