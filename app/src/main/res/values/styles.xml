@@ -127,7 +127,7 @@
         <item name="android:layout_marginTop">@dimen/transaction_et_margin_top</item>
         <item name="android:layout_marginEnd">@dimen/transaction_et_margin_horizontal</item>
         <item name="android:layout_marginStart">@dimen/transaction_et_margin_horizontal</item>
-        <item name="errorEnabled">false</item>
+        <item name="errorEnabled">true</item>
         <item name="endIconMode">dropdown_menu</item>
     </style>
 
