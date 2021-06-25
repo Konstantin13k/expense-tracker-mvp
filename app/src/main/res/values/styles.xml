@@ -83,10 +83,12 @@
         <item name="android:layout_marginTop">@dimen/transaction_title_margin_top</item>
         <item name="android:layout_marginEnd">@dimen/transaction_title_margin_end</item>
         <item name="android:textSize">@dimen/transaction_title_size</item>
+        <item name="android:ellipsize">end</item>
+        <item name="android:maxLines">3</item>
     </style>
 
     <style name="transaction_amount_style">
-        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:layout_marginTop">@dimen/transaction_amount_margin_top</item>
         <item name="android:layout_marginEnd">@dimen/transaction_amount_margin_end</item>
@@ -132,6 +134,13 @@
     <style name="transaction_input_date_style" parent="transaction_input_layout_style">
         <item name="endIconMode">custom</item>
         <item name="endIconDrawable">@drawable/ic_calendar</item>
+    </style>
+
+    <style name="transaction_date_picker_style" parent="@style/ThemeOverlay.MaterialComponents.MaterialCalendar">
+        <item name="colorPrimary">?attr/colorSecondary</item>
+        <item name="colorOnPrimary">?attr/colorOnSecondary</item>
+        <item name="textInputStyle">@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox
+        </item>
     </style>
 
 </resources>

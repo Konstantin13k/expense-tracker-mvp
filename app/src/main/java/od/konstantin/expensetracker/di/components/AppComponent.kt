@@ -6,7 +6,9 @@ import dagger.Component
 import od.konstantin.expensetracker.di.modules.CoroutineModule
 import od.konstantin.expensetracker.di.modules.TransactionsDatabaseModule
 import od.konstantin.expensetracker.di.modules.TransactionsModule
+import od.konstantin.expensetracker.di.modules.UserPrefsModule
 import od.konstantin.expensetracker.domain.repositories.TransactionsRepository
+import od.konstantin.expensetracker.domain.userprefs.UserPrefs
 import javax.inject.Singleton
 
 @Singleton
@@ -14,6 +16,7 @@ import javax.inject.Singleton
     modules = [
         CoroutineModule::class,
         TransactionsDatabaseModule::class,
+        UserPrefsModule::class,
         TransactionsModule::class
     ]
 )
@@ -25,4 +28,6 @@ interface AppComponent {
     }
 
     fun transactionsRepository(): TransactionsRepository
+
+    fun userPrefs(): UserPrefs
 }
