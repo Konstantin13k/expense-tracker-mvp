@@ -12,7 +12,7 @@ interface TransactionsDao {
     @Update
     suspend fun updateTransaction(transaction: TransactionEntity)
 
-    @Query("SELECT * FROM transactions ORDER BY transaction_date LIMIT 20")
+    @Query("SELECT * FROM transactions ORDER BY transaction_date DESC LIMIT 20")
     suspend fun getRecentTransactions(): List<TransactionEntity>
 
     @Query("DELETE FROM transactions WHERE transaction_id = :transactionId")
