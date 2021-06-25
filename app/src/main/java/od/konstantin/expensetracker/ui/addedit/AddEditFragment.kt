@@ -14,5 +14,31 @@ class AddEditFragment : Fragment(R.layout.fragment_add_edit) {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        initAdapters()
+    }
+
+    private fun initAdapters() {
+        initTransactionTypeAdapter()
+        initTransactionTagAdapter()
+    }
+
+    private fun initTransactionTypeAdapter() {
+        binding.transactionTypeSpinner.setAdapter(
+            createDropdownAdapter(R.array.transaction_types)
+        )
+    }
+
+    private fun initTransactionTagAdapter() {
+        binding.transactionTagSpinner.setAdapter(
+            createDropdownAdapter(R.array.transaction_tags)
+        )
+    }
+
+    private fun createDropdownAdapter(arrayId: Int): ArrayAdapter<CharSequence> {
+        return ArrayAdapter.createFromResource(
+            requireContext(),
+            arrayId,
+            R.layout.item_dropdown_popup
+        )
     }
 }
