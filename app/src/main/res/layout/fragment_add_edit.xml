@@ -28,6 +28,7 @@
                 app:layout_constraintTop_toTopOf="parent">
 
                 <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/transaction_title_input"
                     style="@style/transaction_input_text_edit_text_style"
                     android:inputType="text" />
 
@@ -42,6 +43,7 @@
                 app:layout_constraintTop_toBottomOf="@id/transaction_title_text_input">
 
                 <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/transaction_amount_input"
                     style="@style/transaction_input_text_edit_text_style"
                     android:inputType="number" />
 
@@ -56,7 +58,7 @@
                 app:layout_constraintTop_toBottomOf="@id/transaction_amount_text_input">
 
                 <com.google.android.material.textfield.MaterialAutoCompleteTextView
-                    android:id="@+id/transaction_type_spinner"
+                    android:id="@+id/transaction_type_dropdown"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:inputType="none" />
@@ -72,7 +74,7 @@
                 app:layout_constraintTop_toBottomOf="@id/transaction_type_text_input">
 
                 <com.google.android.material.textfield.MaterialAutoCompleteTextView
-                    android:id="@+id/transaction_tag_spinner"
+                    android:id="@+id/transaction_tag_dropdown"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:inputType="none" />
@@ -88,11 +90,12 @@
                 app:layout_constraintTop_toBottomOf="@id/transaction_tag_text_input">
 
                 <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/transaction_date_input"
                     style="@style/transaction_input_text_edit_text_style"
-                    android:inputType="date" />
+                    android:inputType="none" />
 
             </com.google.android.material.textfield.TextInputLayout>
-            
+
         </LinearLayout>
 
     </ScrollView>

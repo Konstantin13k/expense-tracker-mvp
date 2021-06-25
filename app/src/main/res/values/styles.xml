@@ -134,4 +134,10 @@
         <item name="endIconDrawable">@drawable/ic_calendar</item>
     </style>
 
+    <style name="transaction_date_picker_style" parent="@style/ThemeOverlay.MaterialComponents.MaterialCalendar">
+        <item name="colorPrimary">?attr/colorSecondary</item>
+        <item name="colorOnPrimary">?attr/colorOnSecondary</item>
+        <item name="textInputStyle">@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox</item>
+    </style>
+
 </resources>
