@@ -1,11 +1,18 @@
 package od.konstantin.expensetracker.presenters.addedit
 
+import kotlinx.coroutines.launch
 import moxy.MvpPresenter
+import moxy.presenterScope
+import od.konstantin.expensetracker.domain.models.Transaction
 import od.konstantin.expensetracker.domain.models.TransactionTag
 import od.konstantin.expensetracker.domain.models.TransactionType
+import od.konstantin.expensetracker.domain.repositories.TransactionsRepository
 import java.util.*
+import javax.inject.Inject
 
-class AddEditPresenter : MvpPresenter<AddEditView>() {
+class AddEditPresenter @Inject constructor(
+    private val transactionsRepository: TransactionsRepository
+) : MvpPresenter<AddEditView>() {
 
     private val transactionForm: TransactionForm = TransactionForm()
     private val formError = TransactionFormError()
@@ -75,6 +82,15 @@ class AddEditPresenter : MvpPresenter<AddEditView>() {
             formError.isDateEmpty = true
             showFormError()
             return
+        }
+        saveTransaction(
+            Transaction(title, amount, type, tag, date, Date())
+        )
+    }
+
+    private fun saveTransaction(transaction: Transaction) {
+        presenterScope.launch {
+            transactionsRepository.addTransaction(transaction)
         }
     }
 
