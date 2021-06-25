@@ -3,6 +3,7 @@ package od.konstantin.expensetracker.ui.dashboard
 import android.content.Context
 import android.os.Bundle
 import android.view.View
+import androidx.navigation.fragment.findNavController
 import by.kirich1409.viewbindingdelegate.viewBinding
 import moxy.MvpAppCompatFragment
 import moxy.ktx.moxyPresenter
@@ -38,7 +39,16 @@ class DashboardFragment : MvpAppCompatFragment(R.layout.fragment_dashboard), Das
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         initTransactionsAdapter()
+        initListeners()
         presenter.loadRecentTransactions()
+    }
+
+    private fun initListeners() {
+        binding.addTransaction.setOnClickListener {
+            findNavController().navigate(
+                DashboardFragmentDirections.actionDashboardFragmentToAddEditFragment()
+            )
+        }
     }
 
     private fun initTransactionsAdapter() {

@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.view.View
 import android.widget.ArrayAdapter
 import androidx.core.widget.addTextChangedListener
+import androidx.navigation.fragment.findNavController
 import by.kirich1409.viewbindingdelegate.viewBinding
 import com.google.android.material.datepicker.MaterialDatePicker
 import moxy.MvpAppCompatFragment
@@ -65,6 +66,10 @@ class AddEditFragment : MvpAppCompatFragment(R.layout.fragment_add_edit), AddEdi
         transactionDateTextInput.error = if (formError.isDateEmpty) {
             requiredFieldError
         } else ""
+    }
+
+    override fun navigateToPreviousFragment() {
+        findNavController().popBackStack()
     }
 
     private fun initListeners(): Unit = with(binding) {

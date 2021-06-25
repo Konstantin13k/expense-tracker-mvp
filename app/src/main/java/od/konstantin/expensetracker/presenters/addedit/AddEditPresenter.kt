@@ -91,6 +91,7 @@ class AddEditPresenter @Inject constructor(
     private fun saveTransaction(transaction: Transaction) {
         presenterScope.launch {
             transactionsRepository.addTransaction(transaction)
+            viewState.navigateToPreviousFragment()
         }
     }
 
