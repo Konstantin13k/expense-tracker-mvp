@@ -37,4 +37,11 @@
     <dimen name="transaction_title_margin_end">24dp</dimen>
     <dimen name="transaction_date_size">12sp</dimen>
     <dimen name="transaction_card_margin_bottom">12dp</dimen>
+    <dimen name="transaction_et_margin_horizontal">32dp</dimen>
+    <dimen name="transaction_title_et_margin_top">24dp</dimen>
+    <dimen name="transaction_et_margin_top">12dp</dimen>
+    <dimen name="transaction_scrollview_padding">16dp</dimen>
+    <dimen name="add_transaction_button_height">50dp</dimen>
+    <dimen name="add_transaction_button_margin_horizontal">32dp</dimen>
+    <dimen name="add_transaction_button_margin_bottom">32dp</dimen>
 </resources>

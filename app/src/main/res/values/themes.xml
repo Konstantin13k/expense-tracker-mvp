@@ -18,4 +18,16 @@
         <item name="subtitleTextColor">@color/light_subtitle_text</item>
         <item name="android:windowBackground">@color/light_window_background</item>
     </style>
+
+    <style name="ThemeOverlay.App.ExposedInputLayout" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense">
+        <item name="colorPrimary">@color/light_secondary</item>
+        <item name="colorOnSurface">@color/light_on_surface</item>
+        <item name="fontFamily">@font/inter_regular</item>
+    </style>
+
+    <style name="ThemeOverlay.App.ExposedDropdownMenu" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense.ExposedDropdownMenu">
+        <item name="colorPrimary">@color/light_secondary</item>
+        <item name="colorOnSurface">@color/light_on_surface</item>
+        <item name="fontFamily">@font/inter_regular</item>
+    </style>
 </resources>

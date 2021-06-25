@@ -4,6 +4,7 @@
     package="od.konstantin.expensetracker">
 
     <application
+        android:name=".ExpenseTrackerApp"
         android:allowBackup="true"
         android:fullBackupContent="@xml/my_backup_rules"
         android:icon="@mipmap/ic_launcher"

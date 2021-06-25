@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".ui.addedit.AddEditFragment">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:paddingBottom="@dimen/transaction_scrollview_padding">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/transaction_title_text_input"
+                style="@style/transaction_input_layout_style"
+                android:layout_marginTop="@dimen/transaction_title_et_margin_top"
+                android:hint="@string/transaction_hint_title"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    style="@style/transaction_input_text_edit_text_style"
+                    android:inputType="text" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/transaction_amount_text_input"
+                style="@style/transaction_input_layout_style"
+                android:hint="@string/transaction_hint_amount"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/transaction_title_text_input">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    style="@style/transaction_input_text_edit_text_style"
+                    android:inputType="number" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/transaction_type_text_input"
+                style="@style/transaction_input_drop_down_style"
+                android:hint="@string/transaction_hint_type"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/transaction_amount_text_input">
+
+                <com.google.android.material.textfield.MaterialAutoCompleteTextView
+                    android:id="@+id/transaction_type_spinner"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="none" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/transaction_tag_text_input"
+                style="@style/transaction_input_drop_down_style"
+                android:hint="@string/transaction_hint_tags"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/transaction_type_text_input">
+
+                <com.google.android.material.textfield.MaterialAutoCompleteTextView
+                    android:id="@+id/transaction_tag_spinner"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="none" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/transaction_date_text_input"
+                style="@style/transaction_input_date_style"
+                android:hint="@string/transaction_hint_date"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/transaction_tag_text_input">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    style="@style/transaction_input_text_edit_text_style"
+                    android:inputType="date" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+            
+        </LinearLayout>
+
+    </ScrollView>
+
+    <Button
+        android:id="@+id/add_transaction"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/add_transaction_button_height"
+        android:layout_marginHorizontal="@dimen/add_transaction_button_margin_horizontal"
+        android:layout_marginBottom="@dimen/add_transaction_button_margin_bottom"
+        android:background="@drawable/add_transaction_button_background"
+        android:text="@string/add_transaction"
+        android:textColor="?attr/colorOnSecondary" />
+
+</LinearLayout>
+
+
+
+
