@@ -3,22 +3,72 @@ package od.konstantin.expensetracker.ui.addedit
 import android.os.Bundle
 import android.view.View
 import android.widget.ArrayAdapter
-import androidx.fragment.app.Fragment
+import androidx.core.widget.addTextChangedListener
 import by.kirich1409.viewbindingdelegate.viewBinding
 import com.google.android.material.datepicker.MaterialDatePicker
+import moxy.MvpAppCompatFragment
+import moxy.ktx.moxyPresenter
 import od.konstantin.expensetracker.R
 import od.konstantin.expensetracker.databinding.FragmentAddEditBinding
+import od.konstantin.expensetracker.domain.models.TransactionTag
+import od.konstantin.expensetracker.domain.models.TransactionType
+import od.konstantin.expensetracker.presenters.addedit.AddEditPresenter
+import od.konstantin.expensetracker.presenters.addedit.AddEditView
+import od.konstantin.expensetracker.presenters.addedit.TransactionFormError
 import od.konstantin.expensetracker.utils.extensions.format
 import java.util.*
 
-class AddEditFragment : Fragment(R.layout.fragment_add_edit) {
+class AddEditFragment : MvpAppCompatFragment(R.layout.fragment_add_edit), AddEditView {
+
+    private val presenter: AddEditPresenter by moxyPresenter { AddEditPresenter() }
 
     private val binding: FragmentAddEditBinding by viewBinding(FragmentAddEditBinding::bind)
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         initTransactionDateInput()
+        initListeners()
         initAdapters()
+    }
+
+    override fun showTransactionFormError(formError: TransactionFormError): Unit = with(binding) {
+        val requiredFieldError = getString(R.string.required_field_error)
+        transactionTitleTextInput.error = if (formError.isTitleEmpty) {
+            requiredFieldError
+        } else ""
+        transactionTitleTextInput.error = if (formError.isTitleEmpty) {
+            requiredFieldError
+        } else ""
+        transactionAmountTextInput.error = if (formError.isAmountEmpty) {
+            requiredFieldError
+        } else ""
+        transactionTypeTextInput.error = if (formError.isTypeEmpty) {
+            requiredFieldError
+        } else ""
+        transactionTagTextInput.error = if (formError.isTagEmpty) {
+            requiredFieldError
+        } else ""
+        transactionDateTextInput.error = if (formError.isDateEmpty) {
+            requiredFieldError
+        } else ""
+    }
+
+    private fun initListeners(): Unit = with(binding) {
+        transactionTitleInput.addTextChangedListener { title ->
+            presenter.setTransactionTitle(title.toString())
+        }
+        transactionAmountInput.addTextChangedListener { amount ->
+            presenter.setTransactionAmount(amount.toString())
+        }
+        transactionTypeDropdown.setOnItemClickListener { _, _, position, _ ->
+            presenter.setTransactionType(TransactionType.values()[position])
+        }
+        transactionTagDropdown.setOnItemClickListener { _, _, position, _ ->
+            presenter.setTransactionTag(TransactionTag.values()[position])
+        }
+        addTransaction.setOnClickListener {
+            presenter.saveButtonPressed()
+        }
     }
 
     private fun initTransactionDateInput() {
@@ -27,6 +77,7 @@ class AddEditFragment : Fragment(R.layout.fragment_add_edit) {
         datePicker.addOnPositiveButtonClickListener { longDate ->
             val selectedDate = Date(longDate)
             dateInput.setText(selectedDate.format(requireContext()))
+            presenter.setTransactionDate(selectedDate)
         }
         dateInput.setOnClickListener {
             datePicker.show(childFragmentManager, TRANSACTION_DATE_PICKER_TAG)

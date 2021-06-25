@@ -13,6 +13,8 @@
     <string name="transaction_hint_tags">Tags</string>
     <string name="add_transaction">add transaction</string>
 
+    <string name="required_field_error">Required field</string>
+
     <string-array name="transaction_types">
         <item>Income</item>
         <item>Expense</item>
