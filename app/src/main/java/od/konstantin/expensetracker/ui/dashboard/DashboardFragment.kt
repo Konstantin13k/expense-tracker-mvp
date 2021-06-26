@@ -64,7 +64,13 @@ class DashboardFragment : MvpAppCompatFragment(R.layout.fragment_dashboard), Das
     }
 
     private fun initTransactionsAdapter() {
-        transactionsAdapter = TransactionsAdapter()
+        transactionsAdapter = TransactionsAdapter { transaction ->
+            findNavController().navigate(
+                DashboardFragmentDirections.actionDashboardFragmentToTransactionDetailsFragment(
+                    transactionId = transaction.transactionId ?: return@TransactionsAdapter
+                )
+            )
+        }
         binding.recentTransactions.adapter = transactionsAdapter
     }
 }
