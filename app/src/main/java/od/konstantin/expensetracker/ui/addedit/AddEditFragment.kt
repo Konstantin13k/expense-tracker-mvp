@@ -22,6 +22,7 @@ import od.konstantin.expensetracker.presenters.addedit.TransactionForm
 import od.konstantin.expensetracker.presenters.addedit.TransactionFormError
 import od.konstantin.expensetracker.utils.extensions.appComponent
 import od.konstantin.expensetracker.utils.extensions.format
+import od.konstantin.expensetracker.utils.extensions.hideKeyboard
 import java.util.*
 import javax.inject.Inject
 import javax.inject.Provider
@@ -94,6 +95,7 @@ class AddEditFragment : MvpAppCompatFragment(R.layout.fragment_add_edit), AddEdi
     }
 
     override fun navigateToPreviousFragment() {
+        hideKeyboard()
         findNavController().popBackStack()
     }
 
