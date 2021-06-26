@@ -12,5 +12,7 @@ interface TransactionsRepository {
 
     suspend fun getRecentTransactions(): List<Transaction>
 
+    fun observeTransaction(transactionId: Int): Flow<Transaction>
+
     fun observeBalanceInfo(): Flow<BalanceInfo>
 }

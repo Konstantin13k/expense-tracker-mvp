@@ -2,6 +2,7 @@ package od.konstantin.expensetracker.data.repositories
 
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.flow.transform
 import kotlinx.coroutines.withContext
 import od.konstantin.expensetracker.data.local.transactions.dao.TransactionsDao
@@ -42,6 +43,11 @@ class TransactionsRepositoryImpl @Inject constructor(
             transactionsDao.getRecentTransactions()
                 .map(transactionMapper::fromEntity)
         }
+    }
+
+    override fun observeTransaction(transactionId: Int): Flow<Transaction> {
+        return transactionsDao.observeTransaction(transactionId)
+            .map(transactionMapper::fromEntity)
     }
 
     override fun observeBalanceInfo(): Flow<BalanceInfo> {
