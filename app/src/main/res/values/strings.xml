@@ -20,6 +20,7 @@
     <string name="label_transaction_type">Transaction Type</string>
     <string name="label_transaction_tag">Tag</string>
     <string name="label_when">When</string>
+    <string name="edit_transaction_fab_text">Edit</string>
 
     <string-array name="transaction_types">
         <item>Income</item>

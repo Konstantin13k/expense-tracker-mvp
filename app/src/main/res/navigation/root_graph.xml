@@ -14,6 +14,10 @@
             android:id="@+id/action_dashboardFragment_to_addEditFragment"
             app:destination="@id/addEditFragment"
             app:popUpTo="@id/dashboardFragment" />
+        <action
+            android:id="@+id/action_dashboardFragment_to_transactionDetailsFragment"
+            app:destination="@id/transactionDetailsFragment"
+            app:popUpTo="@id/dashboardFragment" />
     </fragment>
 
     <fragment
@@ -21,4 +25,14 @@
         android:name="od.konstantin.expensetracker.ui.addedit.AddEditFragment"
         android:label="Add Transaction"
         tools:layout="@layout/fragment_add_edit" />
+    <fragment
+        android:id="@+id/transactionDetailsFragment"
+        android:name="od.konstantin.expensetracker.ui.details.TransactionDetailsFragment"
+        android:label="Details"
+        tools:layout="@layout/fragment_transaction_details">
+        <argument
+            android:name="transaction_id"
+            app:argType="integer" />
+    </fragment>
+
 </navigation>
