@@ -6,6 +6,7 @@ import android.view.View
 import android.widget.ArrayAdapter
 import androidx.core.widget.addTextChangedListener
 import androidx.navigation.fragment.findNavController
+import androidx.navigation.fragment.navArgs
 import by.kirich1409.viewbindingdelegate.viewBinding
 import com.google.android.material.datepicker.MaterialDatePicker
 import moxy.MvpAppCompatFragment
@@ -17,6 +18,7 @@ import od.konstantin.expensetracker.domain.models.TransactionTag
 import od.konstantin.expensetracker.domain.models.TransactionType
 import od.konstantin.expensetracker.presenters.addedit.AddEditPresenter
 import od.konstantin.expensetracker.presenters.addedit.AddEditView
+import od.konstantin.expensetracker.presenters.addedit.TransactionForm
 import od.konstantin.expensetracker.presenters.addedit.TransactionFormError
 import od.konstantin.expensetracker.utils.extensions.appComponent
 import od.konstantin.expensetracker.utils.extensions.format
@@ -33,6 +35,8 @@ class AddEditFragment : MvpAppCompatFragment(R.layout.fragment_add_edit), AddEdi
 
     private val binding: FragmentAddEditBinding by viewBinding(FragmentAddEditBinding::bind)
 
+    private val args: AddEditFragmentArgs by navArgs()
+
     override fun onAttach(context: Context) {
         super.onAttach(context)
         DaggerAddEditComponent.factory().create(appComponent)
@@ -44,6 +48,10 @@ class AddEditFragment : MvpAppCompatFragment(R.layout.fragment_add_edit), AddEdi
         initTransactionDateInput()
         initListeners()
         initAdapters()
+
+        if (savedInstanceState == null && args.transactionId != NONE_TRANSACTION_ID) {
+            presenter.loadTransactionToEdit(args.transactionId)
+        }
     }
 
     override fun showTransactionFormError(formError: TransactionFormError): Unit = with(binding) {
@@ -66,6 +74,23 @@ class AddEditFragment : MvpAppCompatFragment(R.layout.fragment_add_edit), AddEdi
         transactionDateTextInput.error = if (formError.isDateEmpty) {
             requiredFieldError
         } else ""
+    }
+
+    override fun showTransactionForm(form: TransactionForm): Unit = with(binding) {
+        transactionTitleInput.setText(form.title)
+        transactionAmountInput.setText(form.amount.toString())
+        transactionDateInput.setText(form.transactionDate?.format(requireContext()))
+        form.transactionType?.let {
+            transactionTypeDropdown.setText(
+                resources.getStringArray(R.array.transaction_types)[it.ordinal]
+            )
+        }
+        form.transactionTag?.let {
+            transactionTagDropdown.setText(
+                resources.getStringArray(R.array.transaction_tags)[it.ordinal]
+            )
+        }
+        initAdapters()
     }
 
     override fun navigateToPreviousFragment() {
@@ -136,5 +161,6 @@ class AddEditFragment : MvpAppCompatFragment(R.layout.fragment_add_edit), AddEdi
 
     companion object {
         private const val TRANSACTION_DATE_PICKER_TAG = "transaction_date_picker"
+        private const val NONE_TRANSACTION_ID = -1
     }
 }

@@ -11,7 +11,7 @@ interface TransactionsDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun addTransaction(transaction: TransactionEntity)
 
-    @Update
+    @Update(onConflict = OnConflictStrategy.REPLACE)
     suspend fun updateTransaction(transaction: TransactionEntity)
 
     @Query("SELECT * FROM transactions ORDER BY transaction_date DESC LIMIT 20")

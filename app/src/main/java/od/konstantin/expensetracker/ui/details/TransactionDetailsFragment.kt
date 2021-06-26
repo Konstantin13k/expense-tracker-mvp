@@ -3,6 +3,7 @@ package od.konstantin.expensetracker.ui.details
 import android.content.Context
 import android.os.Bundle
 import android.view.View
+import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import by.kirich1409.viewbindingdelegate.viewBinding
 import moxy.MvpAppCompatFragment
@@ -40,6 +41,7 @@ class TransactionDetailsFragment : MvpAppCompatFragment(R.layout.fragment_transa
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        initListeners()
         if (savedInstanceState == null) {
             presenter.loadTransaction(args.transactionId)
         }
@@ -54,5 +56,15 @@ class TransactionDetailsFragment : MvpAppCompatFragment(R.layout.fragment_transa
             resources.getStringArray(R.array.transaction_types)[transaction.type.ordinal]
         transactionTag.text =
             resources.getStringArray(R.array.transaction_tags)[transaction.tag.ordinal]
+    }
+
+    private fun initListeners() {
+        binding.editTransaction.setOnClickListener {
+            findNavController().navigate(
+                TransactionDetailsFragmentDirections.actionTransactionDetailsFragmentToAddEditFragment(
+                    transactionId = args.transactionId
+                )
+            )
+        }
     }
 }

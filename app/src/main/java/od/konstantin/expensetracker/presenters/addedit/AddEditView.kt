@@ -10,5 +10,8 @@ interface AddEditView : MvpView {
     fun showTransactionFormError(formError: TransactionFormError)
 
     @OneExecution
+    fun showTransactionForm(form: TransactionForm)
+
+    @OneExecution
     fun navigateToPreviousFragment()
 }
