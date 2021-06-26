@@ -15,6 +15,11 @@
 
     <string name="required_field_error">Required field</string>
     <string name="switch_theme">Switch Theme</string>
+    <string name="label_title">Title</string>
+    <string name="label_amount">Amount</string>
+    <string name="label_transaction_type">Transaction Type</string>
+    <string name="label_transaction_tag">Tag</string>
+    <string name="label_when">When</string>
 
     <string-array name="transaction_types">
         <item>Income</item>
