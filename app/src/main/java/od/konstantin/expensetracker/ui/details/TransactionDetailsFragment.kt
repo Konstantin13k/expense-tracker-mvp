@@ -48,8 +48,11 @@ class TransactionDetailsFragment : MvpAppCompatFragment(R.layout.fragment_transa
     override fun showDetails(transaction: Transaction): Unit = with(binding) {
         transactionTitle.text = transaction.title
         transactionAmount.text = transaction.amount.format()
-        transactionType.text = transaction.type.name
-        transactionTag.text = transaction.tag.name
         transactionDate.text = transaction.date.format(requireContext())
+
+        transactionType.text =
+            resources.getStringArray(R.array.transaction_types)[transaction.type.ordinal]
+        transactionTag.text =
+            resources.getStringArray(R.array.transaction_tags)[transaction.tag.ordinal]
     }
 }
