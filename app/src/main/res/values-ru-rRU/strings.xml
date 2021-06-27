@@ -30,6 +30,7 @@
 
     <string name="snackbar_deleted_title">Удалено: %d</string>
     <string name="undo_button_text">Вернуть</string>
+    <string name="label_see_all_transactions">Все</string>
 
     <string-array name="transaction_types">
         <item>Доход</item>
