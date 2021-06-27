@@ -171,4 +171,13 @@
         <item name="android:fontFamily">@font/inter_semi_bold</item>
     </style>
 
+    <style name="transactions_list_style">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:layout_marginStart">@dimen/transactions_list_margin_horizontal</item>
+        <item name="android:layout_marginEnd">@dimen/transactions_list_margin_horizontal</item>
+        <item name="android:orientation">vertical</item>
+        <item name="android:paddingTop">@dimen/transactions_list_padding_top</item>
+    </style>
+
 </resources>

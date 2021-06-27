@@ -7,10 +7,11 @@ import kotlinx.coroutines.launch
 import moxy.MvpPresenter
 import moxy.presenterScope
 import od.konstantin.expensetracker.domain.repositories.TransactionsRepository
+import javax.inject.Inject
 
 private const val DEFAULT_PAGE_SIZE = 30
 
-class TransactionsPresenter(
+class TransactionsListPresenter @Inject constructor(
     private val transactionsRepository: TransactionsRepository
 ) : MvpPresenter<TransactionsListView>() {
 

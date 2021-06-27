@@ -25,6 +25,7 @@
     <string name="title_dashboard">Dashboard</string>
     <string name="title_details">Details</string>
     <string name="title_transaction_form">Transaction Form</string>
+    <string name="title_transactions_list">Transactions</string>
 
     <string name="snackbar_deleted_title">Deleted: %d</string>
     <string name="undo_button_text">Undo</string>
