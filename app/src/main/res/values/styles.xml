@@ -178,6 +178,7 @@
         <item name="android:layout_marginEnd">@dimen/transactions_list_margin_horizontal</item>
         <item name="android:orientation">vertical</item>
         <item name="android:paddingTop">@dimen/transactions_list_padding_top</item>
+        <item name="android:clipToPadding">false</item>
     </style>
 
     <style name="see_all_transactions_style">
