@@ -4,6 +4,7 @@ import android.content.Context
 import android.os.Bundle
 import android.view.View
 import androidx.lifecycle.lifecycleScope
+import androidx.navigation.fragment.findNavController
 import androidx.paging.PagingData
 import androidx.recyclerview.widget.ItemTouchHelper
 import by.kirich1409.viewbindingdelegate.viewBinding
@@ -54,7 +55,13 @@ class TransactionsListFragment : MvpAppCompatFragment(R.layout.fragment_transact
     }
 
     private fun initTransactionsListAdapter() {
-        transactionsListAdapter = TransactionsListAdapter()
+        transactionsListAdapter = TransactionsListAdapter { transaction ->
+            findNavController().navigate(
+                TransactionsListFragmentDirections.actionTransactionsListFragmentToTransactionDetailsFragment(
+                    transactionId = transaction.transactionId ?: return@TransactionsListAdapter
+                )
+            )
+        }
         binding.transactions.adapter = transactionsListAdapter
         presenter.loadTransactions()
         addSwipeToDelete()
