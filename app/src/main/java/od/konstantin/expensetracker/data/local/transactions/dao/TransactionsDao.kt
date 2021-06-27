@@ -1,5 +1,6 @@
 package od.konstantin.expensetracker.data.local.transactions.dao
 
+import androidx.paging.PagingSource
 import androidx.room.*
 import kotlinx.coroutines.flow.Flow
 import od.konstantin.expensetracker.data.local.transactions.entities.TransactionEntity
@@ -16,6 +17,9 @@ interface TransactionsDao {
 
     @Query("SELECT * FROM transactions ORDER BY transaction_date DESC LIMIT 30")
     fun observeRecentTransactions(): Flow<List<TransactionEntity>>
+
+    @Query("SELECT * FROM transactions ORDER BY transaction_date DESC")
+    fun observeTransactions(): PagingSource<Int, TransactionEntity>
 
     @Query("SELECT * FROM transactions WHERE transaction_id = :transactionId")
     fun observeTransaction(transactionId: Int): Flow<TransactionEntity>

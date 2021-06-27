@@ -1,4 +1,4 @@
-package od.konstantin.expensetracker.ui.dashboard.transactions_adapter
+package od.konstantin.expensetracker.common.viewholders
 
 import android.view.LayoutInflater
 import android.view.ViewGroup

@@ -51,6 +51,14 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/total_income_view" />
 
+    <TextView
+        android:id="@+id/label_see_all_transactions"
+        style="@style/see_all_transactions_style"
+        android:text="@string/label_see_all_transactions"
+        app:layout_constraintBottom_toBottomOf="@id/label_recent_transactions"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@id/label_recent_transactions" />
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recent_transactions"
         style="@style/recent_transactions_rv_style"

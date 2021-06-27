@@ -26,9 +26,11 @@
     <string name="title_dashboard">Панель</string>
     <string name="title_details">Детали</string>
     <string name="title_transaction_form">Форма Транзакции</string>
+    <string name="title_transactions_list">Список Транзакций</string>
 
     <string name="snackbar_deleted_title">Удалено: %d</string>
     <string name="undo_button_text">Вернуть</string>
+    <string name="label_see_all_transactions">Все</string>
 
     <string-array name="transaction_types">
         <item>Доход</item>
