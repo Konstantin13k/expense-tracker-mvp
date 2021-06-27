@@ -1,16 +1,17 @@
 package od.konstantin.expensetracker.ui
 
 import android.os.Bundle
-import android.view.Menu
-import android.view.MenuItem
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.AppBarConfiguration
-import androidx.navigation.ui.setupActionBarWithNavController
+import androidx.navigation.ui.setupWithNavController
+import by.kirich1409.viewbindingdelegate.viewBinding
+import com.google.android.material.appbar.MaterialToolbar
 import moxy.MvpAppCompatActivity
 import moxy.ktx.moxyPresenter
 import od.konstantin.expensetracker.ExpenseTrackerApp
 import od.konstantin.expensetracker.R
+import od.konstantin.expensetracker.databinding.ActivityMainBinding
 import od.konstantin.expensetracker.di.components.DaggerMainActivityComponent
 import od.konstantin.expensetracker.domain.models.ThemeMode
 import od.konstantin.expensetracker.presenters.main.MainPresenter
@@ -25,14 +26,14 @@ class MainActivity : MvpAppCompatActivity(R.layout.activity_main), MainView {
 
     private val presenter: MainPresenter by moxyPresenter { provideMainPresenter.get() }
 
-    private var menu: Menu? = null
+    private val binding: ActivityMainBinding by viewBinding(ActivityMainBinding::bind)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         DaggerMainActivityComponent.factory().create(
             (application as ExpenseTrackerApp).appComponent
         ).inject(this)
         super.onCreate(savedInstanceState)
-
+        setupToolbarMenu()
         presenter.loadCurrentThemeMode()
         setupActionBarWithNavController()
     }
@@ -42,49 +43,27 @@ class MainActivity : MvpAppCompatActivity(R.layout.activity_main), MainView {
             supportFragmentManager.findFragmentById(R.id.nav_host_fragment) as NavHostFragment
         val navController = navHostFragment.navController
         val appBarConfiguration = AppBarConfiguration(navController.graph)
-        setupActionBarWithNavController(navController, appBarConfiguration)
+        binding.toolbar.setupWithNavController(navController, appBarConfiguration)
+
     }
 
-    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
-        menuInflater.inflate(R.menu.switch_theme, menu)
-        this.menu = menu
-
-        menu?.findItem(R.id.switch_theme)?.setThemeIcon(
-            isLight = AppCompatDelegate.getDefaultNightMode() == AppCompatDelegate.MODE_NIGHT_NO
-        )
-        return true
-    }
-
-    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        return when (item.itemId) {
-            R.id.switch_theme -> {
-                presenter.switchThemeMode()
-                true
-            }
-            else -> super.onOptionsItemSelected(item)
+    private fun setupToolbarMenu() {
+        val toolbar: MaterialToolbar = binding.toolbar
+        val themeItem = toolbar.menu?.findItem(R.id.switch_theme)
+        themeItem?.setOnMenuItemClickListener {
+            presenter.switchThemeMode()
+            true
         }
     }
 
     override fun setThemeMode(themeMode: ThemeMode) {
-        val themeItem = menu?.findItem(R.id.switch_theme)
-        themeItem?.setThemeIcon(themeMode.isLight)
+        val themeItem = binding.toolbar.menu?.findItem(R.id.switch_theme)
         if (themeMode.isLight) {
+            themeItem?.setIcon(R.drawable.ic_dark_mode)
             AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
         } else {
+            themeItem?.setIcon(R.drawable.ic_light_mode)
             AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
-        }
-    }
-
-    override fun onDestroy() {
-        menu = null
-        super.onDestroy()
-    }
-
-    private fun MenuItem.setThemeIcon(isLight: Boolean) {
-        if (isLight) {
-            setIcon(R.drawable.ic_dark_mode)
-        } else {
-            setIcon(R.drawable.ic_light_mode)
         }
     }
 }

@@ -143,4 +143,32 @@
         </item>
     </style>
 
+    <style name="details_label_style">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginStart">@dimen/details_text_margin_horizontal</item>
+        <item name="android:layout_marginTop">@dimen/details_label_margin_top</item>
+        <item name="android:fontFamily">@font/inter_regular</item>
+        <item name="android:textColor">?attr/subtitleTextColor</item>
+        <item name="android:textSize">@dimen/details_label_size</item>
+    </style>
+
+    <style name="details_text_style" parent="text_style">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginStart">@dimen/details_text_margin_horizontal</item>
+        <item name="android:layout_marginTop">@dimen/details_text_margin_top</item>
+        <item name="android:layout_marginEnd">@dimen/details_text_margin_horizontal</item>
+        <item name="android:textSize">@dimen/details_text_size</item>
+    </style>
+
+    <style name="edit_transaction_fab_style">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginEnd">@dimen/edit_transaction_fab_margin</item>
+        <item name="android:layout_marginBottom">@dimen/edit_transaction_fab_margin</item>
+        <item name="android:backgroundTint">?attr/colorSecondary</item>
+        <item name="android:fontFamily">@font/inter_semi_bold</item>
+    </style>
+
 </resources>

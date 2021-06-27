@@ -1,5 +1,7 @@
 package od.konstantin.expensetracker.presenters.addedit
 
+import kotlinx.coroutines.flow.collect
+import kotlinx.coroutines.flow.take
 import kotlinx.coroutines.launch
 import moxy.MvpPresenter
 import moxy.presenterScope
@@ -16,6 +18,22 @@ class AddEditPresenter @Inject constructor(
 
     private val transactionForm: TransactionForm = TransactionForm()
     private val formError = TransactionFormError()
+
+    fun loadTransactionToEdit(transactionId: Int) {
+        presenterScope.launch {
+            transactionsRepository.observeTransaction(transactionId)
+                .take(1)
+                .collect { (title, amount, type, tag, date) ->
+                    transactionForm.transactionId = transactionId
+                    transactionForm.title = title
+                    transactionForm.amount = amount
+                    transactionForm.transactionType = type
+                    transactionForm.transactionTag = tag
+                    transactionForm.transactionDate = date
+                    viewState.showTransactionForm(transactionForm)
+                }
+        }
+    }
 
     fun setTransactionTitle(title: String) {
         transactionForm.title = title
@@ -84,13 +102,17 @@ class AddEditPresenter @Inject constructor(
             return
         }
         saveTransaction(
-            Transaction(title, amount, type, tag, date, Date())
+            Transaction(title, amount, type, tag, date, Date(), transactionForm.transactionId)
         )
     }
 
     private fun saveTransaction(transaction: Transaction) {
         presenterScope.launch {
-            transactionsRepository.addTransaction(transaction)
+            if (transaction.transactionId == null) {
+                transactionsRepository.addTransaction(transaction)
+            } else {
+                transactionsRepository.updateTransaction(transaction)
+            }
             viewState.navigateToPreviousFragment()
         }
     }
