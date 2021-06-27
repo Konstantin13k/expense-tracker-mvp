@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">ExpenseTracker</string>
+    <string name="label_total_balance">итоговый баланс</string>
+    <string name="label_total_income">общие доходы</string>
+    <string name="label_total_expense">общие расходы</string>
+    <string name="label_recent_transactions">Недавние Транзакции</string>
+    <string name="transaction_date_format">MMM dd, yyyy</string>
+
+    <string name="transaction_hint_title">Заглавие</string>
+    <string name="transaction_hint_amount">Сумма</string>
+    <string name="transaction_hint_type">Тип</string>
+    <string name="transaction_hint_date">Когда</string>
+    <string name="transaction_hint_tags">Теги</string>
+    <string name="add_transaction">добавить транзакцию</string>
+
+    <string name="required_field_error">Обязательное поле</string>
+    <string name="switch_theme">Сменить Тему</string>
+    <string name="label_title">Заглавие</string>
+    <string name="label_amount">Сумма</string>
+    <string name="label_transaction_type">Тип Транзакции</string>
+    <string name="label_transaction_tag">Тег</string>
+    <string name="label_when">Когда</string>
+    <string name="edit_transaction_fab_text">Редактировать</string>
+
+    <string name="title_dashboard">Панель</string>
+    <string name="title_details">Детали</string>
+    <string name="title_transaction_form">Форма Транзакции</string>
+
+    <string-array name="transaction_types">
+        <item>Доход</item>
+        <item>Расход</item>
+    </string-array>
+
+    <string-array name="transaction_tags">
+        <item>Работа</item>
+        <item>Транспорт</item>
+        <item>Персональный</item>
+        <item>Еда</item>
+        <item>Другое</item>
+    </string-array>
+</resources>
