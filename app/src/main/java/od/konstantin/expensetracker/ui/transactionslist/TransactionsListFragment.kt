@@ -5,11 +5,13 @@ import android.os.Bundle
 import android.view.View
 import androidx.lifecycle.lifecycleScope
 import androidx.paging.PagingData
+import androidx.recyclerview.widget.ItemTouchHelper
 import by.kirich1409.viewbindingdelegate.viewBinding
 import kotlinx.coroutines.launch
 import moxy.MvpAppCompatFragment
 import moxy.ktx.moxyPresenter
 import od.konstantin.expensetracker.R
+import od.konstantin.expensetracker.common.SwipeToDeleteCallback
 import od.konstantin.expensetracker.databinding.FragmentTransactionsListBinding
 import od.konstantin.expensetracker.di.components.DaggerTransactionsListComponent
 import od.konstantin.expensetracker.domain.models.Transaction
@@ -55,5 +57,29 @@ class TransactionsListFragment : MvpAppCompatFragment(R.layout.fragment_transact
         transactionsListAdapter = TransactionsListAdapter()
         binding.transactions.adapter = transactionsListAdapter
         presenter.loadTransactions()
+        addSwipeToDelete()
+    }
+
+    private fun addSwipeToDelete() {
+        val transactions = binding.transactions
+        val deletedOneTransactionText = resources.getString(R.string.snackbar_deleted_title, 1)
+        val undoDeletedTransactionText = resources.getString(R.string.undo_button_text)
+
+        val swipeToDeleteCallback = SwipeToDeleteCallback(
+            recyclerView = transactions,
+            deletedOneTransactionText = deletedOneTransactionText,
+            undoDeletedTransactionText = undoDeletedTransactionText,
+            onSwipe = { position ->
+                transactionsListAdapter.peek(position)?.let { transaction ->
+                    presenter.deleteTransaction(transaction)
+                }
+            },
+            onUndo = {
+                presenter.undoDeletedTransaction()
+            }
+        )
+
+        val itemTouchHelper = ItemTouchHelper(swipeToDeleteCallback)
+        itemTouchHelper.attachToRecyclerView(transactions)
     }
 }
