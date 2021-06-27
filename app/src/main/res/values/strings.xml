@@ -26,6 +26,9 @@
     <string name="title_details">Details</string>
     <string name="title_transaction_form">Transaction Form</string>
 
+    <string name="snackbar_deleted_title">Deleted: %d</string>
+    <string name="undo_button_text">Undo</string>
+
     <string-array name="transaction_types">
         <item>Income</item>
         <item>Expense</item>

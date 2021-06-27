@@ -38,6 +38,12 @@ class TransactionsRepositoryImpl @Inject constructor(
         }
     }
 
+    override suspend fun deleteTransaction(transactionId: Int) {
+        withContext(ioDispatcher) {
+            transactionsDao.deleteTransaction(transactionId)
+        }
+    }
+
     override fun observeRecentTransactions(): Flow<List<Transaction>> {
         return transactionsDao.observeRecentTransactions()
             .map { transactions ->
