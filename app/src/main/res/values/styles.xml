@@ -171,4 +171,23 @@
         <item name="android:fontFamily">@font/inter_semi_bold</item>
     </style>
 
+    <style name="transactions_list_style">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:layout_marginStart">@dimen/transactions_list_margin_horizontal</item>
+        <item name="android:layout_marginEnd">@dimen/transactions_list_margin_horizontal</item>
+        <item name="android:orientation">vertical</item>
+        <item name="android:paddingTop">@dimen/transactions_list_padding_top</item>
+        <item name="android:clipToPadding">false</item>
+    </style>
+
+    <style name="see_all_transactions_style">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginEnd">@dimen/recent_transactions_label_margin_start</item>
+        <item name="android:fontFamily">@font/inter_regular</item>
+        <item name="android:textColor">?attr/subtitleTextColor</item>
+        <item name="android:textSize">@dimen/label_see_all_transactions_size</item>
+    </style>
+
 </resources>

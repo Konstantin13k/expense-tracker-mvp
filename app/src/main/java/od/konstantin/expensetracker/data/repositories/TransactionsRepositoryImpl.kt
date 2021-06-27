@@ -1,5 +1,9 @@
 package od.konstantin.expensetracker.data.repositories
 
+import androidx.paging.Pager
+import androidx.paging.PagingConfig
+import androidx.paging.PagingData
+import androidx.paging.map
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map
@@ -49,6 +53,14 @@ class TransactionsRepositoryImpl @Inject constructor(
             .map { transactions ->
                 transactions.map(transactionMapper::fromEntity)
             }
+    }
+
+    override fun observeTransactions(pageSize: Int): Flow<PagingData<Transaction>> {
+        return Pager(PagingConfig(pageSize)) {
+            transactionsDao.observeTransactions()
+        }.flow.map { pagingData ->
+            pagingData.map(transactionMapper::fromEntity)
+        }
     }
 
     override fun observeTransaction(transactionId: Int): Flow<Transaction> {

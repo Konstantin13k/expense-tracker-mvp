@@ -18,6 +18,10 @@
             android:id="@+id/action_dashboardFragment_to_transactionDetailsFragment"
             app:destination="@id/transactionDetailsFragment"
             app:popUpTo="@id/dashboardFragment" />
+        <action
+            android:id="@+id/action_dashboardFragment_to_transactionsListFragment"
+            app:destination="@id/transactionsListFragment"
+            app:popUpTo="@id/dashboardFragment" />
     </fragment>
 
     <fragment
@@ -43,6 +47,16 @@
             android:id="@+id/action_transactionDetailsFragment_to_addEditFragment"
             app:destination="@id/addEditFragment"
             app:popUpTo="@id/transactionDetailsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/transactionsListFragment"
+        android:name="od.konstantin.expensetracker.ui.transactionslist.TransactionsListFragment"
+        android:label="@string/title_transactions_list"
+        tools:layout="@layout/fragment_transactions_list">
+        <action
+            android:id="@+id/action_transactionsListFragment_to_transactionDetailsFragment"
+            app:destination="@id/transactionDetailsFragment"
+            app:popUpTo="@id/transactionsListFragment" />
     </fragment>
 
 </navigation>

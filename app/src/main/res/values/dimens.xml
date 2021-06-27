@@ -51,4 +51,7 @@
     <dimen name="details_text_margin_top">12dp</dimen>
     <dimen name="toolbar_elevation">4dp</dimen>
     <dimen name="edit_transaction_fab_margin">24dp</dimen>
+    <dimen name="transactions_list_margin_horizontal">16dp</dimen>
+    <dimen name="transactions_list_padding_top">16dp</dimen>
+    <dimen name="label_see_all_transactions_size">16sp</dimen>
 </resources>

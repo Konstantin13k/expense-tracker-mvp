@@ -1,4 +1,4 @@
-package od.konstantin.expensetracker.ui.dashboard.transactions_adapter
+package od.konstantin.expensetracker.common.diffutils
 
 import androidx.recyclerview.widget.DiffUtil
 import od.konstantin.expensetracker.domain.models.Transaction
