@@ -29,6 +29,7 @@
 
     <string name="snackbar_deleted_title">Deleted: %d</string>
     <string name="undo_button_text">Undo</string>
+    <string name="label_see_all_transactions">See All</string>
 
     <string-array name="transaction_types">
         <item>Income</item>

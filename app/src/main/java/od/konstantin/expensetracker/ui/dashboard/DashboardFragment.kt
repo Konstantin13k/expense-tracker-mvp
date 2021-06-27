@@ -64,6 +64,11 @@ class DashboardFragment : MvpAppCompatFragment(R.layout.fragment_dashboard), Das
                 DashboardFragmentDirections.actionDashboardFragmentToAddEditFragment()
             )
         }
+        binding.labelSeeAllTransactions.setOnClickListener {
+            findNavController().navigate(
+                DashboardFragmentDirections.actionDashboardFragmentToTransactionsListFragment()
+            )
+        }
     }
 
     private fun initTransactionsAdapter() {
