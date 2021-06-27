@@ -8,7 +8,7 @@
     <fragment
         android:id="@+id/dashboardFragment"
         android:name="od.konstantin.expensetracker.ui.dashboard.DashboardFragment"
-        android:label="Dashboard"
+        android:label="@string/title_dashboard"
         tools:layout="@layout/fragment_dashboard">
         <action
             android:id="@+id/action_dashboardFragment_to_addEditFragment"
@@ -23,7 +23,7 @@
     <fragment
         android:id="@+id/addEditFragment"
         android:name="od.konstantin.expensetracker.ui.addedit.AddEditFragment"
-        android:label="Add Transaction"
+        android:label="@string/title_transaction_form"
         tools:layout="@layout/fragment_add_edit">
         <argument
             android:name="transaction_id"
@@ -34,7 +34,7 @@
     <fragment
         android:id="@+id/transactionDetailsFragment"
         android:name="od.konstantin.expensetracker.ui.details.TransactionDetailsFragment"
-        android:label="Details"
+        android:label="@string/title_details"
         tools:layout="@layout/fragment_transaction_details">
         <argument
             android:name="transaction_id"
