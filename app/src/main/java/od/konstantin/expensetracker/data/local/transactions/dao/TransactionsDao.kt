@@ -18,7 +18,7 @@ interface TransactionsDao {
     @Query("SELECT * FROM transactions ORDER BY transaction_date DESC LIMIT 30")
     fun observeRecentTransactions(): Flow<List<TransactionEntity>>
 
-    @Query("SELECT * FROM transactions ORDER BY transaction_date")
+    @Query("SELECT * FROM transactions ORDER BY transaction_date DESC")
     fun observeTransactions(): PagingSource<Int, TransactionEntity>
 
     @Query("SELECT * FROM transactions WHERE transaction_id = :transactionId")
