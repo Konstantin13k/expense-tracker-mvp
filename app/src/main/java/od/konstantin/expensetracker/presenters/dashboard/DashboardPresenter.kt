@@ -13,6 +13,11 @@ class DashboardPresenter @Inject constructor(
 
     override fun onFirstViewAttach() {
         super.onFirstViewAttach()
+        loadBalanceInfo()
+        loadRecentTransactions()
+    }
+
+    private fun loadBalanceInfo() {
         presenterScope.launch {
             transactionsRepository.observeBalanceInfo().collect { balanceInfo ->
                 viewState.showBalanceInfo(balanceInfo)
@@ -20,10 +25,11 @@ class DashboardPresenter @Inject constructor(
         }
     }
 
-    fun loadRecentTransactions() {
+    private fun loadRecentTransactions() {
         presenterScope.launch {
-            val transactions = transactionsRepository.getRecentTransactions()
-            viewState.showTransactions(transactions)
+            transactionsRepository.observeRecentTransactions().collect { transactions ->
+                viewState.showTransactions(transactions)
+            }
         }
     }
 }

@@ -42,7 +42,6 @@ class DashboardFragment : MvpAppCompatFragment(R.layout.fragment_dashboard), Das
         super.onViewCreated(view, savedInstanceState)
         initTransactionsAdapter()
         initListeners()
-        presenter.loadRecentTransactions()
     }
 
     override fun showBalanceInfo(balanceInfo: BalanceInfo): Unit = with(binding) {

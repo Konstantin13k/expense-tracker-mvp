@@ -38,11 +38,11 @@ class TransactionsRepositoryImpl @Inject constructor(
         }
     }
 
-    override suspend fun getRecentTransactions(): List<Transaction> {
-        return withContext(ioDispatcher) {
-            transactionsDao.getRecentTransactions()
-                .map(transactionMapper::fromEntity)
-        }
+    override fun observeRecentTransactions(): Flow<List<Transaction>> {
+        return transactionsDao.observeRecentTransactions()
+            .map { transactions ->
+                transactions.map(transactionMapper::fromEntity)
+            }
     }
 
     override fun observeTransaction(transactionId: Int): Flow<Transaction> {
