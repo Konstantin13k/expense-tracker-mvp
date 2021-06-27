@@ -2,6 +2,8 @@ package od.konstantin.expensetracker.ui.dashboard.transactions_adapter
 
 import android.view.ViewGroup
 import androidx.recyclerview.widget.ListAdapter
+import od.konstantin.expensetracker.common.diffutils.TransactionDiffUtil
+import od.konstantin.expensetracker.common.viewholders.TransactionViewHolder
 import od.konstantin.expensetracker.domain.models.Transaction
 
 class TransactionsAdapter(

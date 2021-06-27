@@ -3,8 +3,8 @@ package od.konstantin.expensetracker.ui.transactionslist.transactions_adapter
 import android.view.ViewGroup
 import androidx.paging.PagingDataAdapter
 import od.konstantin.expensetracker.domain.models.Transaction
-import od.konstantin.expensetracker.ui.dashboard.transactions_adapter.TransactionDiffUtil
-import od.konstantin.expensetracker.ui.dashboard.transactions_adapter.TransactionViewHolder
+import od.konstantin.expensetracker.common.diffutils.TransactionDiffUtil
+import od.konstantin.expensetracker.common.viewholders.TransactionViewHolder
 
 class TransactionsListAdapter :
     PagingDataAdapter<Transaction, TransactionViewHolder>(TransactionDiffUtil()) {
