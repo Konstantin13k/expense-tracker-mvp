@@ -60,11 +60,7 @@ class TransactionsListFragment : MvpAppCompatFragment(R.layout.fragment_transact
 
     private fun initTransactionsListAdapter() {
         transactionsListAdapter = TransactionsListAdapter { transaction ->
-            findNavController().navigate(
-                TransactionsListFragmentDirections.actionTransactionsListFragmentToTransactionDetailsFragment(
-                    transactionId = transaction.transactionId ?: return@TransactionsListAdapter
-                )
-            )
+            navigateToTransactionDetails(transaction)
         }
         binding.transactions.adapter = transactionsListAdapter
         presenter.loadTransactions()
@@ -102,5 +98,21 @@ class TransactionsListFragment : MvpAppCompatFragment(R.layout.fragment_transact
         exitTransition = MaterialSharedAxis(MaterialSharedAxis.Z, false).apply {
             duration = motionDuration
         }
+    }
+
+    private fun navigateToTransactionDetails(transaction: Transaction) {
+        val motionDuration = resources.getInteger(R.integer.shared_axis_motion_duration).toLong()
+        exitTransition = MaterialSharedAxis(MaterialSharedAxis.X, true).apply {
+            duration = motionDuration
+        }
+        reenterTransition = MaterialSharedAxis(MaterialSharedAxis.X, false).apply {
+            duration = motionDuration
+        }
+
+        findNavController().navigate(
+            TransactionsListFragmentDirections.actionTransactionsListFragmentToTransactionDetailsFragment(
+                transactionId = transaction.transactionId ?: return
+            )
+        )
     }
 }
