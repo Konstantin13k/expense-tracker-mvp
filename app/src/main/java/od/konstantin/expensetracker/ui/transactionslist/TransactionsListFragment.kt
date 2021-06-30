@@ -95,7 +95,7 @@ class TransactionsListFragment : MvpAppCompatFragment(R.layout.fragment_transact
         enterTransition = MaterialSharedAxis(MaterialSharedAxis.Z, true).apply {
             duration = motionDuration
         }
-        exitTransition = MaterialSharedAxis(MaterialSharedAxis.Z, false).apply {
+        returnTransition = MaterialSharedAxis(MaterialSharedAxis.Z, false).apply {
             duration = motionDuration
         }
     }
