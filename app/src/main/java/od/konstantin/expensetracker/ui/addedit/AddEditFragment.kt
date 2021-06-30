@@ -1,6 +1,7 @@
 package od.konstantin.expensetracker.ui.addedit
 
 import android.content.Context
+import android.graphics.Color
 import android.os.Bundle
 import android.view.View
 import android.widget.ArrayAdapter
@@ -9,6 +10,8 @@ import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import by.kirich1409.viewbindingdelegate.viewBinding
 import com.google.android.material.datepicker.MaterialDatePicker
+import com.google.android.material.transition.platform.MaterialArcMotion
+import com.google.android.material.transition.platform.MaterialContainerTransform
 import moxy.MvpAppCompatFragment
 import moxy.ktx.moxyPresenter
 import od.konstantin.expensetracker.R
@@ -23,6 +26,7 @@ import od.konstantin.expensetracker.presenters.addedit.TransactionFormError
 import od.konstantin.expensetracker.utils.extensions.appComponent
 import od.konstantin.expensetracker.utils.extensions.format
 import od.konstantin.expensetracker.utils.extensions.hideKeyboard
+import od.konstantin.expensetracker.utils.extensions.themeColor
 import java.util.*
 import javax.inject.Inject
 import javax.inject.Provider
@@ -46,6 +50,7 @@ class AddEditFragment : MvpAppCompatFragment(R.layout.fragment_add_edit), AddEdi
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        initTransitions()
         initTransactionDateInput()
         initListeners()
         initAdapters()
@@ -159,6 +164,30 @@ class AddEditFragment : MvpAppCompatFragment(R.layout.fragment_add_edit), AddEdi
         return MaterialDatePicker.Builder.datePicker()
             .setTheme(R.style.transaction_date_picker_style)
             .build()
+    }
+
+    private fun initTransitions() {
+        val motionDuration = resources.getInteger(R.integer.shared_element_motion_duration).toLong()
+        val secondaryColor = requireContext().themeColor(R.attr.colorSecondary)
+        val windowBackgroundColor = requireContext().themeColor(android.R.attr.windowBackground)
+
+        sharedElementEnterTransition = MaterialContainerTransform().apply {
+            drawingViewId = R.id.nav_host_fragment
+            duration = motionDuration
+            scrimColor = Color.TRANSPARENT
+            startContainerColor = secondaryColor
+            endContainerColor = windowBackgroundColor
+            pathMotion = MaterialArcMotion()
+        }
+
+        sharedElementReturnTransition = MaterialContainerTransform().apply {
+            drawingViewId = R.id.nav_host_fragment
+            duration = motionDuration
+            scrimColor = Color.TRANSPARENT
+            startContainerColor = windowBackgroundColor
+            endContainerColor = secondaryColor
+            pathMotion = MaterialArcMotion()
+        }
     }
 
     companion object {

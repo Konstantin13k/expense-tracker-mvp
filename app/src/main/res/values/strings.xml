@@ -43,4 +43,10 @@
         <item>Food</item>
         <item>Other</item>
     </string-array>
+
+    <!--  Transition names  -->
+    <string name="transition_name_all_transactions" translatable="false">all_transactions</string>
+    <string name="transition_name_add_edit_transaction" translatable="false">add_edit_transaction</string>
+    <string name="transition_name_add_transaction" translatable="false">add_transaction</string>
+    <string name="transition_name_edit_transaction" translatable="false">edit_transaction</string>
 </resources>

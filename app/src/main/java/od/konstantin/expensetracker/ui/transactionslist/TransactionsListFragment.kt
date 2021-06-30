@@ -8,6 +8,7 @@ import androidx.navigation.fragment.findNavController
 import androidx.paging.PagingData
 import androidx.recyclerview.widget.ItemTouchHelper
 import by.kirich1409.viewbindingdelegate.viewBinding
+import com.google.android.material.transition.platform.MaterialSharedAxis
 import kotlinx.coroutines.launch
 import moxy.MvpAppCompatFragment
 import moxy.ktx.moxyPresenter
@@ -46,6 +47,9 @@ class TransactionsListFragment : MvpAppCompatFragment(R.layout.fragment_transact
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         initTransactionsListAdapter()
+        if (savedInstanceState == null) {
+            initTransitions()
+        }
     }
 
     override fun showTransactionData(transactionData: PagingData<Transaction>) {
@@ -56,11 +60,7 @@ class TransactionsListFragment : MvpAppCompatFragment(R.layout.fragment_transact
 
     private fun initTransactionsListAdapter() {
         transactionsListAdapter = TransactionsListAdapter { transaction ->
-            findNavController().navigate(
-                TransactionsListFragmentDirections.actionTransactionsListFragmentToTransactionDetailsFragment(
-                    transactionId = transaction.transactionId ?: return@TransactionsListAdapter
-                )
-            )
+            navigateToTransactionDetails(transaction)
         }
         binding.transactions.adapter = transactionsListAdapter
         presenter.loadTransactions()
@@ -88,5 +88,31 @@ class TransactionsListFragment : MvpAppCompatFragment(R.layout.fragment_transact
 
         val itemTouchHelper = ItemTouchHelper(swipeToDeleteCallback)
         itemTouchHelper.attachToRecyclerView(transactions)
+    }
+
+    private fun initTransitions() {
+        val motionDuration = resources.getInteger(R.integer.shared_axis_motion_duration).toLong()
+        enterTransition = MaterialSharedAxis(MaterialSharedAxis.Z, true).apply {
+            duration = motionDuration
+        }
+        returnTransition = MaterialSharedAxis(MaterialSharedAxis.Z, false).apply {
+            duration = motionDuration
+        }
+    }
+
+    private fun navigateToTransactionDetails(transaction: Transaction) {
+        val motionDuration = resources.getInteger(R.integer.shared_axis_motion_duration).toLong()
+        exitTransition = MaterialSharedAxis(MaterialSharedAxis.X, true).apply {
+            duration = motionDuration
+        }
+        reenterTransition = MaterialSharedAxis(MaterialSharedAxis.X, false).apply {
+            duration = motionDuration
+        }
+
+        findNavController().navigate(
+            TransactionsListFragmentDirections.actionTransactionsListFragmentToTransactionDetailsFragment(
+                transactionId = transaction.transactionId ?: return
+            )
+        )
     }
 }

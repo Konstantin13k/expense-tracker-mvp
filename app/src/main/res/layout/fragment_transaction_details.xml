@@ -85,6 +85,7 @@
         android:id="@+id/edit_transaction"
         style="@style/edit_transaction_fab_style"
         android:text="@string/edit_transaction_fab_text"
+        android:transitionName="@string/transition_name_edit_transaction"
         app:icon="@drawable/ic_edit"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
