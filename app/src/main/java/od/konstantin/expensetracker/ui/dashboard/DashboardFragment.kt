@@ -3,9 +3,11 @@ package od.konstantin.expensetracker.ui.dashboard
 import android.content.Context
 import android.os.Bundle
 import android.view.View
+import androidx.core.view.doOnPreDraw
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.ItemTouchHelper
 import by.kirich1409.viewbindingdelegate.viewBinding
+import com.google.android.material.transition.platform.MaterialSharedAxis
 import moxy.MvpAppCompatFragment
 import moxy.ktx.moxyPresenter
 import od.konstantin.expensetracker.R
@@ -42,6 +44,10 @@ class DashboardFragment : MvpAppCompatFragment(R.layout.fragment_dashboard), Das
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        postponeEnterTransition()
+        view.doOnPreDraw {
+            startPostponedEnterTransition()
+        }
         initTransactionsAdapter()
         initListeners()
     }
@@ -63,9 +69,7 @@ class DashboardFragment : MvpAppCompatFragment(R.layout.fragment_dashboard), Das
             )
         }
         binding.labelSeeAllTransactions.setOnClickListener {
-            findNavController().navigate(
-                DashboardFragmentDirections.actionDashboardFragmentToTransactionsListFragment()
-            )
+            navigateToTransactionsList()
         }
     }
 
@@ -101,5 +105,19 @@ class DashboardFragment : MvpAppCompatFragment(R.layout.fragment_dashboard), Das
 
         val itemTouchHelper = ItemTouchHelper(swipeToDeleteCallback)
         itemTouchHelper.attachToRecyclerView(recentTransactions)
+    }
+
+    private fun navigateToTransactionsList() {
+        val motionDuration = resources.getInteger(R.integer.shared_axis_motion_duration).toLong()
+        exitTransition = MaterialSharedAxis(MaterialSharedAxis.Z, true).apply {
+            duration = motionDuration
+        }
+        reenterTransition = MaterialSharedAxis(MaterialSharedAxis.Z, false).apply {
+            duration = motionDuration
+        }
+
+        findNavController().navigate(
+            DashboardFragmentDirections.actionDashboardFragmentToTransactionsListFragment(),
+        )
     }
 }

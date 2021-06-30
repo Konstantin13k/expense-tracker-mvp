@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/transactions"
     style="@style/transactions_list_style"
+    android:transitionName="@string/transition_name_all_transactions"
     app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
     tools:context=".ui.transactionslist.TransactionsListFragment"
     tools:itemCount="6"
-    tools:listitem="@layout/view_holder_transaction"/>
+    tools:listitem="@layout/view_holder_transaction" />

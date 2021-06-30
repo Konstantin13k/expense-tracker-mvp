@@ -8,6 +8,7 @@ import androidx.navigation.fragment.findNavController
 import androidx.paging.PagingData
 import androidx.recyclerview.widget.ItemTouchHelper
 import by.kirich1409.viewbindingdelegate.viewBinding
+import com.google.android.material.transition.platform.MaterialSharedAxis
 import kotlinx.coroutines.launch
 import moxy.MvpAppCompatFragment
 import moxy.ktx.moxyPresenter
@@ -46,6 +47,9 @@ class TransactionsListFragment : MvpAppCompatFragment(R.layout.fragment_transact
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         initTransactionsListAdapter()
+        if (savedInstanceState == null) {
+            initTransitions()
+        }
     }
 
     override fun showTransactionData(transactionData: PagingData<Transaction>) {
@@ -88,5 +92,15 @@ class TransactionsListFragment : MvpAppCompatFragment(R.layout.fragment_transact
 
         val itemTouchHelper = ItemTouchHelper(swipeToDeleteCallback)
         itemTouchHelper.attachToRecyclerView(transactions)
+    }
+
+    private fun initTransitions() {
+        val motionDuration = resources.getInteger(R.integer.shared_axis_motion_duration).toLong()
+        enterTransition = MaterialSharedAxis(MaterialSharedAxis.Z, true).apply {
+            duration = motionDuration
+        }
+        exitTransition = MaterialSharedAxis(MaterialSharedAxis.Z, false).apply {
+            duration = motionDuration
+        }
     }
 }
