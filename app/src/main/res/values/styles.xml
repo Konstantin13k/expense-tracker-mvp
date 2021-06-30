@@ -56,9 +56,9 @@
     <style name="recent_transactions_rv_style">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">0dp</item>
-        <item name="android:layout_marginStart">@dimen/recent_transactions_rv_margin_horiz</item>
+        <item name="android:paddingStart">@dimen/recent_transactions_rv_padding_horiz</item>
         <item name="android:layout_marginTop">@dimen/recent_transactions_rv_margin_top</item>
-        <item name="android:layout_marginEnd">@dimen/recent_transactions_rv_margin_horiz</item>
+        <item name="android:paddingEnd">@dimen/recent_transactions_rv_padding_horiz</item>
     </style>
 
     <style name="add_transaction_fab_style">
@@ -174,8 +174,8 @@
     <style name="transactions_list_style">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">match_parent</item>
-        <item name="android:layout_marginStart">@dimen/transactions_list_margin_horizontal</item>
-        <item name="android:layout_marginEnd">@dimen/transactions_list_margin_horizontal</item>
+        <item name="android:paddingStart">@dimen/transactions_list_padding_horizontal</item>
+        <item name="android:paddingEnd">@dimen/transactions_list_padding_horizontal</item>
         <item name="android:orientation">vertical</item>
         <item name="android:paddingTop">@dimen/transactions_list_padding_top</item>
         <item name="android:clipToPadding">false</item>
