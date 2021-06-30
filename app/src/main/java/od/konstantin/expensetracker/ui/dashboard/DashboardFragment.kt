@@ -75,11 +75,7 @@ class DashboardFragment : MvpAppCompatFragment(R.layout.fragment_dashboard), Das
 
     private fun initTransactionsAdapter() {
         transactionsAdapter = TransactionsAdapter { transaction ->
-            findNavController().navigate(
-                DashboardFragmentDirections.actionDashboardFragmentToTransactionDetailsFragment(
-                    transactionId = transaction.transactionId ?: return@TransactionsAdapter
-                )
-            )
+            navigateToTransactionDetails(transaction)
         }
         binding.recentTransactions.adapter = transactionsAdapter
         addSwipeToDelete()
@@ -118,6 +114,22 @@ class DashboardFragment : MvpAppCompatFragment(R.layout.fragment_dashboard), Das
 
         findNavController().navigate(
             DashboardFragmentDirections.actionDashboardFragmentToTransactionsListFragment(),
+        )
+    }
+
+    private fun navigateToTransactionDetails(transaction: Transaction) {
+        val motionDuration = resources.getInteger(R.integer.shared_axis_motion_duration).toLong()
+        exitTransition = MaterialSharedAxis(MaterialSharedAxis.X, true).apply {
+            duration = motionDuration
+        }
+        reenterTransition = MaterialSharedAxis(MaterialSharedAxis.X, false).apply {
+            duration = motionDuration
+        }
+
+        findNavController().navigate(
+            DashboardFragmentDirections.actionDashboardFragmentToTransactionDetailsFragment(
+                transactionId = transaction.transactionId ?: return
+            )
         )
     }
 }

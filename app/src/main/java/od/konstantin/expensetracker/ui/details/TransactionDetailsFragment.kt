@@ -6,6 +6,7 @@ import android.view.View
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import by.kirich1409.viewbindingdelegate.viewBinding
+import com.google.android.material.transition.platform.MaterialSharedAxis
 import moxy.MvpAppCompatFragment
 import moxy.ktx.moxyPresenter
 import od.konstantin.expensetracker.R
@@ -43,6 +44,7 @@ class TransactionDetailsFragment : MvpAppCompatFragment(R.layout.fragment_transa
         super.onViewCreated(view, savedInstanceState)
         initListeners()
         if (savedInstanceState == null) {
+            initTransitions()
             presenter.loadTransaction(args.transactionId)
         }
     }
@@ -65,6 +67,16 @@ class TransactionDetailsFragment : MvpAppCompatFragment(R.layout.fragment_transa
                     transactionId = args.transactionId
                 )
             )
+        }
+    }
+
+    private fun initTransitions() {
+        val motionDuration = resources.getInteger(R.integer.shared_axis_motion_duration).toLong()
+        enterTransition = MaterialSharedAxis(MaterialSharedAxis.X, true).apply {
+            duration = motionDuration
+        }
+        exitTransition = MaterialSharedAxis(MaterialSharedAxis.X, false).apply {
+            duration = motionDuration
         }
     }
 }
