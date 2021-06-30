@@ -59,6 +59,8 @@
         <item name="android:paddingStart">@dimen/recent_transactions_rv_padding_horiz</item>
         <item name="android:layout_marginTop">@dimen/recent_transactions_rv_margin_top</item>
         <item name="android:paddingEnd">@dimen/recent_transactions_rv_padding_horiz</item>
+        <item name="android:scrollbars">vertical</item>
+        <item name="android:scrollbarStyle">outsideOverlay</item>
     </style>
 
     <style name="add_transaction_fab_style">
@@ -179,6 +181,8 @@
         <item name="android:orientation">vertical</item>
         <item name="android:paddingTop">@dimen/transactions_list_padding_top</item>
         <item name="android:clipToPadding">false</item>
+        <item name="android:scrollbars">vertical</item>
+        <item name="android:scrollbarStyle">outsideOverlay</item>
     </style>
 
     <style name="see_all_transactions_style">
