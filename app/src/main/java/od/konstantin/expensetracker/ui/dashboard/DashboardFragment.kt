@@ -4,9 +4,11 @@ import android.content.Context
 import android.os.Bundle
 import android.view.View
 import androidx.core.view.doOnPreDraw
+import androidx.navigation.fragment.FragmentNavigatorExtras
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.ItemTouchHelper
 import by.kirich1409.viewbindingdelegate.viewBinding
+import com.google.android.material.transition.platform.Hold
 import com.google.android.material.transition.platform.MaterialSharedAxis
 import moxy.MvpAppCompatFragment
 import moxy.ktx.moxyPresenter
@@ -64,9 +66,7 @@ class DashboardFragment : MvpAppCompatFragment(R.layout.fragment_dashboard), Das
 
     private fun initListeners() {
         binding.addTransaction.setOnClickListener {
-            findNavController().navigate(
-                DashboardFragmentDirections.actionDashboardFragmentToAddEditFragment()
-            )
+            navigateToAddEditTransaction()
         }
         binding.labelSeeAllTransactions.setOnClickListener {
             navigateToTransactionsList()
@@ -101,6 +101,23 @@ class DashboardFragment : MvpAppCompatFragment(R.layout.fragment_dashboard), Das
 
         val itemTouchHelper = ItemTouchHelper(swipeToDeleteCallback)
         itemTouchHelper.attachToRecyclerView(recentTransactions)
+    }
+
+    private fun navigateToAddEditTransaction() {
+        val motionDuration = resources.getInteger(R.integer.shared_axis_motion_duration).toLong()
+        val extras = FragmentNavigatorExtras(
+            binding.addTransaction to resources.getString(R.string.transition_name_add_edit_transaction)
+        )
+
+        exitTransition = Hold().apply {
+            duration = motionDuration
+        }
+        reenterTransition = null
+
+        findNavController().navigate(
+            DashboardFragmentDirections.actionDashboardFragmentToAddEditFragment(),
+            extras
+        )
     }
 
     private fun navigateToTransactionsList() {
