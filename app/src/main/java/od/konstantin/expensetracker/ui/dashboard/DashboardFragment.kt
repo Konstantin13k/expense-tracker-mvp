@@ -104,7 +104,7 @@ class DashboardFragment : MvpAppCompatFragment(R.layout.fragment_dashboard), Das
     }
 
     private fun navigateToAddEditTransaction() {
-        val motionDuration = resources.getInteger(R.integer.shared_axis_motion_duration).toLong()
+        val motionDuration = resources.getInteger(R.integer.shared_element_motion_duration).toLong()
         val extras = FragmentNavigatorExtras(
             binding.addTransaction to resources.getString(R.string.transition_name_add_edit_transaction)
         )

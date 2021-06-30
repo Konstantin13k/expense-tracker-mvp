@@ -3,9 +3,11 @@ package od.konstantin.expensetracker.ui.details
 import android.content.Context
 import android.os.Bundle
 import android.view.View
+import androidx.navigation.fragment.FragmentNavigatorExtras
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import by.kirich1409.viewbindingdelegate.viewBinding
+import com.google.android.material.transition.platform.Hold
 import com.google.android.material.transition.platform.MaterialSharedAxis
 import moxy.MvpAppCompatFragment
 import moxy.ktx.moxyPresenter
@@ -62,11 +64,7 @@ class TransactionDetailsFragment : MvpAppCompatFragment(R.layout.fragment_transa
 
     private fun initListeners() {
         binding.editTransaction.setOnClickListener {
-            findNavController().navigate(
-                TransactionDetailsFragmentDirections.actionTransactionDetailsFragmentToAddEditFragment(
-                    transactionId = args.transactionId
-                )
-            )
+            navigateToAddEditTransaction()
         }
     }
 
@@ -78,5 +76,24 @@ class TransactionDetailsFragment : MvpAppCompatFragment(R.layout.fragment_transa
         returnTransition = MaterialSharedAxis(MaterialSharedAxis.X, false).apply {
             duration = motionDuration
         }
+    }
+
+    private fun navigateToAddEditTransaction() {
+        val motionDuration = resources.getInteger(R.integer.shared_element_motion_duration).toLong()
+        val extras = FragmentNavigatorExtras(
+            binding.editTransaction to resources.getString(R.string.transition_name_add_edit_transaction)
+        )
+
+        exitTransition = Hold().apply {
+            duration = motionDuration
+        }
+        reenterTransition = null
+
+        findNavController().navigate(
+            TransactionDetailsFragmentDirections.actionTransactionDetailsFragmentToAddEditFragment(
+                transactionId = args.transactionId
+            ),
+            extras
+        )
     }
 }
