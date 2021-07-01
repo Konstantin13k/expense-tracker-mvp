@@ -117,7 +117,7 @@ class AddEditFragment : MvpAppCompatFragment(R.layout.fragment_add_edit), AddEdi
         transactionTagDropdown.setOnItemClickListener { _, _, position, _ ->
             presenter.setTransactionTag(TransactionTag.values()[position])
         }
-        addTransaction.setOnClickListener {
+        saveTransaction.setOnClickListener {
             presenter.saveButtonPressed()
         }
     }
