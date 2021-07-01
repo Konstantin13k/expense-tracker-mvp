@@ -16,6 +16,7 @@
         <item name="colorOnSurface">@color/dark_on_surface</item>
         <item name="titleTextColor">?attr/colorOnSurface</item>
         <item name="subtitleTextColor">@color/light_subtitle_text</item>
+        <item name="android:colorEdgeEffect">?attr/colorSecondary</item>
         <item name="android:windowBackground">@color/dark_window_background</item>
     </style>
 

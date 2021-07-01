@@ -3,9 +3,13 @@ package od.konstantin.expensetracker.ui.dashboard
 import android.content.Context
 import android.os.Bundle
 import android.view.View
+import androidx.core.view.doOnPreDraw
+import androidx.navigation.fragment.FragmentNavigatorExtras
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.ItemTouchHelper
 import by.kirich1409.viewbindingdelegate.viewBinding
+import com.google.android.material.transition.platform.Hold
+import com.google.android.material.transition.platform.MaterialSharedAxis
 import moxy.MvpAppCompatFragment
 import moxy.ktx.moxyPresenter
 import od.konstantin.expensetracker.R
@@ -42,6 +46,10 @@ class DashboardFragment : MvpAppCompatFragment(R.layout.fragment_dashboard), Das
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        postponeEnterTransition()
+        view.doOnPreDraw {
+            startPostponedEnterTransition()
+        }
         initTransactionsAdapter()
         initListeners()
     }
@@ -58,24 +66,16 @@ class DashboardFragment : MvpAppCompatFragment(R.layout.fragment_dashboard), Das
 
     private fun initListeners() {
         binding.addTransaction.setOnClickListener {
-            findNavController().navigate(
-                DashboardFragmentDirections.actionDashboardFragmentToAddEditFragment()
-            )
+            navigateToAddEditTransaction()
         }
         binding.labelSeeAllTransactions.setOnClickListener {
-            findNavController().navigate(
-                DashboardFragmentDirections.actionDashboardFragmentToTransactionsListFragment()
-            )
+            navigateToTransactionsList()
         }
     }
 
     private fun initTransactionsAdapter() {
         transactionsAdapter = TransactionsAdapter { transaction ->
-            findNavController().navigate(
-                DashboardFragmentDirections.actionDashboardFragmentToTransactionDetailsFragment(
-                    transactionId = transaction.transactionId ?: return@TransactionsAdapter
-                )
-            )
+            navigateToTransactionDetails(transaction)
         }
         binding.recentTransactions.adapter = transactionsAdapter
         addSwipeToDelete()
@@ -101,5 +101,52 @@ class DashboardFragment : MvpAppCompatFragment(R.layout.fragment_dashboard), Das
 
         val itemTouchHelper = ItemTouchHelper(swipeToDeleteCallback)
         itemTouchHelper.attachToRecyclerView(recentTransactions)
+    }
+
+    private fun navigateToAddEditTransaction() {
+        val motionDuration = resources.getInteger(R.integer.shared_element_motion_duration).toLong()
+        val extras = FragmentNavigatorExtras(
+            binding.addTransaction to resources.getString(R.string.transition_name_add_edit_transaction)
+        )
+
+        exitTransition = Hold().apply {
+            duration = motionDuration
+        }
+        reenterTransition = null
+
+        findNavController().navigate(
+            DashboardFragmentDirections.actionDashboardFragmentToAddEditFragment(),
+            extras
+        )
+    }
+
+    private fun navigateToTransactionsList() {
+        val motionDuration = resources.getInteger(R.integer.shared_axis_motion_duration).toLong()
+        exitTransition = MaterialSharedAxis(MaterialSharedAxis.Z, true).apply {
+            duration = motionDuration
+        }
+        reenterTransition = MaterialSharedAxis(MaterialSharedAxis.Z, false).apply {
+            duration = motionDuration
+        }
+
+        findNavController().navigate(
+            DashboardFragmentDirections.actionDashboardFragmentToTransactionsListFragment(),
+        )
+    }
+
+    private fun navigateToTransactionDetails(transaction: Transaction) {
+        val motionDuration = resources.getInteger(R.integer.shared_axis_motion_duration).toLong()
+        exitTransition = MaterialSharedAxis(MaterialSharedAxis.X, true).apply {
+            duration = motionDuration
+        }
+        reenterTransition = MaterialSharedAxis(MaterialSharedAxis.X, false).apply {
+            duration = motionDuration
+        }
+
+        findNavController().navigate(
+            DashboardFragmentDirections.actionDashboardFragmentToTransactionDetailsFragment(
+                transactionId = transaction.transactionId ?: return
+            )
+        )
     }
 }

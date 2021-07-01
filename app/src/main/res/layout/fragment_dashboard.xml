@@ -75,6 +75,7 @@
         android:id="@+id/add_transaction"
         style="@style/add_transaction_fab_style"
         android:src="@drawable/ic_add"
+        android:transitionName="@string/transition_name_add_transaction"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         tools:ignore="ContentDescription" />

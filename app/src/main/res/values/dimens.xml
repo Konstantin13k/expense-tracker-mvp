@@ -20,7 +20,7 @@
     <dimen name="recent_transactions_label_size">16sp</dimen>
     <dimen name="recent_transactions_label_margin_top">24dp</dimen>
     <dimen name="recent_transactions_rv_margin_top">24dp</dimen>
-    <dimen name="recent_transactions_rv_margin_horiz">16dp</dimen>
+    <dimen name="recent_transactions_rv_padding_horiz">16dp</dimen>
     <dimen name="add_transaction_fab_margin">24dp</dimen>
     <dimen name="transaction_card_height">100dp</dimen>
     <dimen name="transaction_icon_background_size">76dp</dimen>
@@ -41,9 +41,9 @@
     <dimen name="transaction_title_et_margin_top">24dp</dimen>
     <dimen name="transaction_et_margin_top">12dp</dimen>
     <dimen name="transaction_scrollview_padding">16dp</dimen>
-    <dimen name="add_transaction_button_height">60dp</dimen>
-    <dimen name="add_transaction_button_margin_horizontal">32dp</dimen>
-    <dimen name="add_transaction_button_margin_bottom">32dp</dimen>
+    <dimen name="save_transaction_button_height">60dp</dimen>
+    <dimen name="save_transaction_button_margin_horizontal">32dp</dimen>
+    <dimen name="save_transaction_button_margin_bottom">32dp</dimen>
     <dimen name="details_label_margin_top">40dp</dimen>
     <dimen name="details_text_margin_horizontal">32dp</dimen>
     <dimen name="details_label_size">12sp</dimen>
@@ -51,7 +51,7 @@
     <dimen name="details_text_margin_top">12dp</dimen>
     <dimen name="toolbar_elevation">4dp</dimen>
     <dimen name="edit_transaction_fab_margin">24dp</dimen>
-    <dimen name="transactions_list_margin_horizontal">16dp</dimen>
+    <dimen name="transactions_list_padding_horizontal">16dp</dimen>
     <dimen name="transactions_list_padding_top">16dp</dimen>
     <dimen name="label_see_all_transactions_size">16sp</dimen>
 </resources>
